@@ -48,7 +48,7 @@ class personalInformViewController: UIViewController {
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 let key = snap.key
-                var value = snap.value
+                let value = snap.value
                 switch key {
                 case ("firstName"):
                     self.fName.text = "\(value!)"

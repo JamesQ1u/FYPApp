@@ -13,6 +13,8 @@ import Firebase
 
 class LoginViewController:UIViewController, UITextFieldDelegate {
     
+    let db = Firestore.firestore()
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var dismissButton: UIButton!
@@ -139,6 +141,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
     }
     
     @objc func handleSignIn() {
+        
         guard let email = emailField.text else { return }
         guard let pass = passwordField.text else { return }
         
@@ -146,12 +149,14 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         continueButton.setTitle("", for: .normal)
         activityView.startAnimating()
         
-        Auth.auth().signIn(withEmail: email, password: pass) { user, error in
-            if error == nil && user != nil {
-                self.dismiss(animated: false, completion: nil)
-            } else {
-                print("Error logging in: \(error!.localizedDescription)")
+            Auth.auth().signIn(withEmail: email, password: pass) { user, error in
+                if error == nil && user != nil {
+                    self.dismiss(animated: false, completion: nil)
+                } else {
+                    print("Error logging in: \(error!.localizedDescription)")
+                }
             }
-        }
+            
+        
     }
 }

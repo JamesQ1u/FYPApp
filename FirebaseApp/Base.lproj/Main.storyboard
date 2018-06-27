@@ -24,18 +24,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firebase Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwD-pA-wP8">
-                                <rect key="frame" x="104" y="294.5" width="168" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Replicode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ur3-mF-lwc">
-                                <rect key="frame" x="130.5" y="331.5" width="114" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEy-02-j6m" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
                                 <rect key="frame" x="24" y="499" width="327" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -64,8 +52,8 @@
                                     <segue destination="iFR-Wf-CNF" kind="show" animates="NO" id="fih-sH-gxZ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tyw-Hd-i8c">
-                                <rect key="frame" x="137" y="170.5" width="100" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tyw-Hd-i8c">
+                                <rect key="frame" x="137" y="326.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tyw-Hd-i8c" secondAttribute="height" multiplier="1:1" id="1nc-ly-1wW"/>
                                     <constraint firstAttribute="height" constant="100" id="xTU-jQ-BwF"/>
@@ -75,16 +63,11 @@
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wEy-02-j6m" secondAttribute="trailing" constant="24" id="3uE-B4-mX8"/>
-                            <constraint firstItem="SwD-pA-wP8" firstAttribute="top" secondItem="Tyw-Hd-i8c" secondAttribute="bottom" constant="24" id="6sY-Zn-EAA"/>
                             <constraint firstItem="Tyw-Hd-i8c" firstAttribute="centerX" secondItem="jcX-Y8-8qg" secondAttribute="centerX" id="8xu-DN-5hN"/>
                             <constraint firstItem="wEy-02-j6m" firstAttribute="leading" secondItem="jk9-az-r39" secondAttribute="leading" constant="24" id="KuT-pL-ejy"/>
-                            <constraint firstItem="ur3-mF-lwc" firstAttribute="centerX" secondItem="jk9-az-r39" secondAttribute="centerX" id="QmR-bJ-ueX"/>
                             <constraint firstAttribute="bottomMargin" secondItem="PBI-s3-y7o" secondAttribute="bottom" constant="24" id="Z5H-qa-8b2"/>
                             <constraint firstItem="PBI-s3-y7o" firstAttribute="top" secondItem="wEy-02-j6m" secondAttribute="bottom" constant="16" id="aQx-sJ-mUt"/>
                             <constraint firstAttribute="trailing" secondItem="PBI-s3-y7o" secondAttribute="trailing" constant="24" id="egf-IM-Ild"/>
-                            <constraint firstItem="ur3-mF-lwc" firstAttribute="centerY" secondItem="jcX-Y8-8qg" secondAttribute="centerY" id="hwA-he-SOl"/>
-                            <constraint firstItem="ur3-mF-lwc" firstAttribute="top" secondItem="SwD-pA-wP8" secondAttribute="bottom" constant="8" id="qRp-kF-nc5"/>
-                            <constraint firstItem="SwD-pA-wP8" firstAttribute="centerX" secondItem="jk9-az-r39" secondAttribute="centerX" id="rtQ-wY-eLc"/>
                             <constraint firstItem="PBI-s3-y7o" firstAttribute="leading" secondItem="jk9-az-r39" secondAttribute="leading" constant="24" id="tQh-tF-HJu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jcX-Y8-8qg"/>
@@ -100,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04D-Ss-cgp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839" y="113"/>
+            <point key="canvasLocation" x="1837.5999999999999" y="112.89355322338831"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Jne-cs-3BV">
@@ -431,8 +414,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rev-Gt-Mci">
-                                <rect key="frame" x="34" y="189" width="111" height="52"/>
+                                <rect key="frame" x="47" y="252" width="295" height="191"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="63"/>
                                 <state key="normal" title="Scan"/>
                                 <connections>
                                     <segue destination="SP3-I6-toV" kind="show" id="eOG-Pt-ITU"/>
@@ -452,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-Wg-ciN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4486" y="113"/>
+            <point key="canvasLocation" x="4485.6000000000004" y="112.89355322338831"/>
         </scene>
         <!--InitialViewController-->
         <scene sceneID="6ab-wZ-pIY">
@@ -637,7 +621,7 @@
         <!--Personal Inform View Controller-->
         <scene sceneID="PqU-OP-goe">
             <objects>
-                <viewController storyboardIdentifier="personalInformViewController" id="Hgz-Dt-oxn" customClass="personalInformViewController" customModule="QRcode" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="personalInformViewController" id="Hgz-Dt-oxn" customClass="personalInformViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bJo-MJ-4qq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
