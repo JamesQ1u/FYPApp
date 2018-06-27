@@ -140,6 +140,20 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         }
     }
     
+    func isAdminOrJudgeAcc (){
+        
+        let a = true
+       let db = Firestore.firestore()
+//       let _userType = db.collection("user").whereField(,isEqualTo: "Admin")
+        
+        
+       
+          
+    
+        
+       
+    }
+        
     @objc func handleSignIn() {
         
         guard let email = emailField.text else { return }
@@ -152,6 +166,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: email, password: pass) { user, error in
                 if error == nil && user != nil {
                     self.dismiss(animated: false, completion: nil)
+                    self.isAdminOrJudgeAcc()
+                    
                 } else {
                     print("Error logging in: \(error!.localizedDescription)")
                 }
