@@ -916,9 +916,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="71i-WT-gy0"/>
                     <connections>
-                        <outlet property="UID" destination="Hjr-W9-Pch" id="bCn-Og-WTT"/>
-                        <outlet property="chName" destination="gLd-DM-ZXn" id="ttI-dq-kRI"/>
-                        <outlet property="fName" destination="Y8w-sn-bPG" id="nNC-vs-ttu"/>
+                        <outlet property="CName" destination="gLd-DM-ZXn" id="0pf-if-8XV"/>
+                        <outlet property="EName" destination="Y8w-sn-bPG" id="gHm-qe-8Nm"/>
+                        <outlet property="UID" destination="Hjr-W9-Pch" id="F8c-FC-ka6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txi-yz-2CN" userLabel="First Responder" sceneMemberID="firstResponder"/>

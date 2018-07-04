@@ -15,39 +15,33 @@ class personalInformViewController: UIViewController {
     @IBOutlet weak var CName: UITextField!
 
     
-    
-    
-    
     var urlName:String?
-    var ref: DatabaseReference!
-    override func viewDidLoad() {
-        UID.text = urlName
-        super.viewDidLoad()
+    var ref: DocumentReference!
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        ref.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!)
+        UID.text = urlName
         // Do any additional setup after loading the view.
     }
     
     @IBAction func loadData(_ sender: UIButton) {
-        ref = Database.database().reference()
-        ref.child("user").child(UID.text!).observeSingleEvent(of: .value, with: { (snapshot) in
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                switch key {
-                case ("firstName"):
-                    self.EName.text = "\(value!)"
-                case ("chinese_name"):
-                    self.CName.text = "\(value!)"
-                default:
-                    break
-                }
-                
-                print("key = \(key)  value = \(value!)")
+        ref.addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
             }
-        })
+            if let Ename = document.data()!["EName"] as? String{
+                self.EName.text = "\(Ename)"
+            }
+            if let Cname = document.data()!["CName"] as? String{
+                self.CName.text = "\(Cname)"
+            }
+            
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -114,31 +114,13 @@ class QRScannerController: UIViewController {
         let alertPrompt = UIAlertController(title: "UID", message: "The UID is \(decodedURL)", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             
-            
-            //            if let url = URL(string: decodedURL) {
-            //
-            //                print("key = \(url)")
-            //                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            //                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "personalInformViewController") as! personalInformViewController
-            //                self.present(nextViewController, animated: true, completion: nil)
-            //
-            //
-            //            }
-            //
-            
             self.urlName = decodedURL
             self.performSegue(withIdentifier: "name", sender: self)
             
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "personalInformViewController") as! personalInformViewController
             self.present(nextViewController, animated: true, completion: nil)
-            
-            
-            
-        }
-            
-            
-        )
+        })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
