@@ -435,7 +435,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Scan"/>
                                 <connections>
-                                    <segue destination="SP3-I6-toV" kind="show" id="eOG-Pt-ITU"/>
+                                    <segue destination="SP3-I6-toV" kind="presentation" identifier="" id="eOG-Pt-ITU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -533,7 +533,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRc-2l-gaa">
-                                <rect key="frame" x="89" y="78" width="197" height="68.5"/>
+                                <rect key="frame" x="89" y="34" width="197" height="68.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="50"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -626,7 +626,7 @@
                     <connections>
                         <outlet property="messageLabel" destination="ozd-wh-Raf" id="Ml1-xr-H9f"/>
                         <outlet property="topbar" destination="K1Q-h0-43v" id="cSx-o2-gv1"/>
-                        <segue destination="Hgz-Dt-oxn" kind="presentation" id="9PU-15-VJm"/>
+                        <segue destination="Hgz-Dt-oxn" kind="presentation" identifier="name" id="9PU-15-VJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JZ-zR-VwR" userLabel="First Responder" sceneMemberID="firstResponder"/>

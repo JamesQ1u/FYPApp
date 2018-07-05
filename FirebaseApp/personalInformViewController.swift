@@ -16,18 +16,19 @@ class personalInformViewController: UIViewController {
 
     
     var urlName:String?
-    var ref: DocumentReference!
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        ref.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!)
         UID.text = urlName
+        
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func loadData(_ sender: UIButton) {
-        ref.addSnapshotListener { documentSnapshot, error in
+        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
@@ -38,7 +39,7 @@ class personalInformViewController: UIViewController {
             if let Cname = document.data()!["CName"] as? String{
                 self.CName.text = "\(Cname)"
             }
-            
+            print("test::")
         }
     }
 
