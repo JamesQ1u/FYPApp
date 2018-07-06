@@ -22,7 +22,7 @@ class personalInformViewController: UIViewController {
         
         super.viewDidLoad()
         UID.text = urlName
-        
+
         
         // Do any additional setup after loading the view.
     }
@@ -39,15 +39,31 @@ class personalInformViewController: UIViewController {
             if let Cname = document.data()!["CName"] as? String{
                 self.CName.text = "\(Cname)"
             }
-            print("test::")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let mark = segue.destination as! MarkViewController
+        mark.urlName = self.urlName
+    }
+    
+    @IBAction func mark(_ sender: UIButton){
+        self.performSegue(withIdentifier: "name", sender: self)
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MarkViewController") as! MarkViewController
+        self.present(nextViewController, animated: true, completion: nil)
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+
 
     /*
     // MARK: - Navigation
