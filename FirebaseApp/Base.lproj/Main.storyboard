@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firebase Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwD-pA-wP8">
-                                <rect key="frame" x="104" y="294.5" width="168" height="29"/>
+                                <rect key="frame" x="103.5" y="294.5" width="168" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tyw-Hd-i8c">
-                                <rect key="frame" x="137" y="170.5" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="170.5" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tyw-Hd-i8c" secondAttribute="height" multiplier="1:1" id="1nc-ly-1wW"/>
                                     <constraint firstAttribute="height" constant="100" id="xTU-jQ-BwF"/>
@@ -124,7 +124,7 @@
                                                 <rect key="frame" x="36" y="64" width="303" height="350"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mE-Jf-hu2">
-                                                        <rect key="frame" x="124.5" y="8" width="54.5" height="24"/>
+                                                        <rect key="frame" x="124.5" y="8" width="55" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -426,18 +426,23 @@
                         <viewControllerLayoutGuide type="top" id="sFM-pe-jJN"/>
                         <viewControllerLayoutGuide type="bottom" id="4Oh-CU-K6n"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="B5y-uX-wWw">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="B5y-uX-wWw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rev-Gt-Mci">
-                                <rect key="frame" x="34" y="189" width="111" height="52"/>
+                                <rect key="frame" x="234" y="575" width="111" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Scan"/>
                                 <connections>
                                     <segue destination="SP3-I6-toV" kind="presentation" identifier="" id="eOG-Pt-ITU"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9j-Vl-Qcx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="495"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="LLN-Pp-W04"/>
@@ -452,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-Wg-ciN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4486" y="113"/>
+            <point key="canvasLocation" x="4485.6000000000004" y="112.89355322338831"/>
         </scene>
         <!--InitialViewController-->
         <scene sceneID="6ab-wZ-pIY">
@@ -481,7 +486,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EOR-6X-u2e">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -637,7 +642,7 @@
         <!--HeadJudgeScoresheetView Controller-->
         <scene sceneID="Z5m-vx-Ktc">
             <objects>
-                <viewController id="4tH-Eo-UF0" userLabel="HeadJudgeScoresheetView Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarkViewController" id="4tH-Eo-UF0" userLabel="HeadJudgeScoresheetView Controller" customClass="MarkViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YGK-z6-1eI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -649,7 +654,7 @@
                                 <color key="textColor" red="1" green="0.1788201395" blue="0.11406991900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwp-8n-eVV">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="jwp-8n-eVV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -842,15 +847,28 @@
                                 <rect key="frame" x="293" y="617" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="loadData:" destination="4tH-Eo-UF0" eventType="touchUpInside" id="8AN-LG-s0G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K6z-w1-1vr"/>
                     </view>
+                    <connections>
+                        <outlet property="falseStart" destination="yd0-3x-qi4" id="Yfh-8T-qxR"/>
+                        <outlet property="falseSwitch" destination="HkE-f4-QUp" id="FgU-ef-lya"/>
+                        <outlet property="judge1" destination="q0A-bK-IhP" id="r7o-T6-vNs"/>
+                        <outlet property="judge2" destination="UeR-AN-HOx" id="BUQ-nk-uAw"/>
+                        <outlet property="judge3" destination="LkE-zg-yh2" id="qe9-Gc-GXN"/>
+                        <outlet property="spaceViolations" destination="xXm-kj-Kkh" id="Vq0-fe-IiT"/>
+                        <outlet property="techinicalJudge" destination="XUO-zk-qV1" id="q5d-wl-e4k"/>
+                        <outlet property="totalDeductions" destination="am7-6k-LdY" id="mJc-Fv-wbo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsT-wj-k4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5614" y="358"/>
+            <point key="canvasLocation" x="6505" y="358"/>
         </scene>
         <!--Personal Inform View Controller-->
         <scene sceneID="PqU-OP-goe">
@@ -910,11 +928,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bo5-vI-aoI">
+                                <rect key="frame" x="293" y="588" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="mark"/>
+                                <connections>
+                                    <action selector="mark:" destination="Hgz-Dt-oxn" eventType="touchUpInside" id="jO2-Dd-AgD"/>
+                                    <segue destination="4tH-Eo-UF0" kind="presentation" identifier="name" id="tOT-bU-LIj"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" shadowImage="backArrow" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="RPh-fU-UpB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Paticipant" id="Jss-Ep-LrW"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5wc-nb-HO8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="71i-WT-gy0"/>
                     <connections>
                         <outlet property="CName" destination="gLd-DM-ZXn" id="0pf-if-8XV"/>
                         <outlet property="EName" destination="Y8w-sn-bPG" id="gHm-qe-8Nm"/>
@@ -1029,7 +1062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iO8-a4-SoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6325.6000000000004" y="357.57121439280365"/>
+            <point key="canvasLocation" x="7286" y="358"/>
         </scene>
         <!--ContentCScoresheetView Controller-->
         <scene sceneID="zQL-cX-sVi">
@@ -1135,7 +1168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jw-J4-J4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7048.8000000000002" y="357.57121439280365"/>
+            <point key="canvasLocation" x="8130" y="358"/>
         </scene>
         <!--OnePeopleHeadJudgeScoresheetView Controller-->
         <scene sceneID="9b0-OK-f3p">
@@ -1339,7 +1372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJH-RY-giq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7804" y="358"/>
+            <point key="canvasLocation" x="9014" y="358"/>
         </scene>
     </scenes>
     <resources>

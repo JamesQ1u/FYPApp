@@ -26,10 +26,13 @@ class personalInformViewController: UITableViewController {
         
         super.viewDidLoad()
         UID.text = urlName
-         
+        
         data=[CellDate.init(image:#imageLiteral(resourceName: "jump") , message: "Noel is good")]
         
         self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
+
+        
+
         // Do any additional setup after loading the view.
     }
     
@@ -45,16 +48,31 @@ class personalInformViewController: UITableViewController {
             if let Cname = document.data()!["CName"] as? String{
                 self.CName.text = "\(Cname)"
             }
-            print("test::")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let mark = segue.destination as! MarkViewController
+        mark.urlName = self.urlName
+    }
+    @IBAction func mark(_ sender: UIButton){
+        self.performSegue(withIdentifier: "name", sender: self)
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MarkViewController") as! MarkViewController
+        self.present(nextViewController, animated: true, completion: nil)
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableView? {
+
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
         let cell =  self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
         cell.mainImage = data[indexPath.row].image
         cell.message = data[indexPath.row].message
@@ -63,6 +81,9 @@ class personalInformViewController: UITableViewController {
     override func tableView(_ tableView:UITableView, numberOfRowsInSection Section: Int) -> Int {
         return data.count
     }
+
+
+
     /*
     // MARK: - Navigation
 
