@@ -8,12 +8,16 @@
 
 import UIKit
 import Firebase
-
-class personalInformViewController: UIViewController {
+struct CellDate {
+    let image : UIImage?
+    let message: String?
+}
+class personalInformViewController: UITableViewController {
     @IBOutlet weak var UID: UITextField!
     @IBOutlet weak var EName: UITextField!
     @IBOutlet weak var CName: UITextField!
-
+    
+    var data = [CellDate]()
     
     var urlName:String?
     let db = Firestore.firestore()
@@ -22,8 +26,10 @@ class personalInformViewController: UIViewController {
         
         super.viewDidLoad()
         UID.text = urlName
+         
+        data=[CellDate.init(image:#imageLiteral(resourceName: "jump") , message: "Noel is good")]
         
-        
+        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
         // Do any additional setup after loading the view.
     }
     
@@ -48,7 +54,15 @@ class personalInformViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableView? {
+        let cell =  self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
+        cell.mainImage = data[indexPath.row].image
+        cell.message = data[indexPath.row].message
+        return cell
+    }
+    override func tableView(_ tableView:UITableView, numberOfRowsInSection Section: Int) -> Int {
+        return data.count
+    }
     /*
     // MARK: - Navigation
 

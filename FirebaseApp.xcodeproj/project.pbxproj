@@ -12,7 +12,8 @@
 		1AFCE15D20E15A5300B37EC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCE15C20E15A5300B37EC6 /* HomeViewController.swift */; };
 		1AFCE15F20E1632300B37EC6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCE15E20E1632200B37EC6 /* QRCodeViewController.swift */; };
 		1AFCE16120E1632800B37EC6 /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCE16020E1632700B37EC6 /* QRScannerController.swift */; };
-		AA5776821C253AD6D756FC95 /* Pods_FirebaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530357161740A5232331C1C /* Pods_FirebaseApp.framework */; };
+		4BEF282B20F04C080083279D /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEF282A20F04C080083279D /* CustomCell.swift */; };
+		67CB2D2A2CA210B789D34442 /* Pods_FirebaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B63D3507C5D0AE99951FDC /* Pods_FirebaseApp.framework */; };
 		B0E7901320250813002DA8AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7901220250813002DA8AF /* AppDelegate.swift */; };
 		B0E7901520250813002DA8AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7901420250813002DA8AF /* ViewController.swift */; };
 		B0E7901820250813002DA8AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0E7901620250813002DA8AF /* Main.storyboard */; };
@@ -34,7 +35,8 @@
 		1AFCE15E20E1632200B37EC6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		1AFCE16020E1632700B37EC6 /* QRScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 		23DCF916975076001258BF6C /* Pods-FirebaseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.release.xcconfig"; sourceTree = "<group>"; };
-		6530357161740A5232331C1C /* Pods_FirebaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BEF282A20F04C080083279D /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		B0B63D3507C5D0AE99951FDC /* Pods_FirebaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E7900F20250813002DA8AF /* FirebaseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E7901220250813002DA8AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E7901420250813002DA8AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5776821C253AD6D756FC95 /* Pods_FirebaseApp.framework in Frameworks */,
+				67CB2D2A2CA210B789D34442 /* Pods_FirebaseApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +67,7 @@
 		19187D5D88527D5B7DEEE027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6530357161740A5232331C1C /* Pods_FirebaseApp.framework */,
+				B0B63D3507C5D0AE99951FDC /* Pods_FirebaseApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 				1AFCE15E20E1632200B37EC6 /* QRCodeViewController.swift */,
 				1AFCE16020E1632700B37EC6 /* QRScannerController.swift */,
 				1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */,
+				4BEF282A20F04C080083279D /* CustomCell.swift */,
 				B0E7901620250813002DA8AF /* Main.storyboard */,
 				B0E7901920250813002DA8AF /* Assets.xcassets */,
 				B0E7901B20250813002DA8AF /* LaunchScreen.storyboard */,
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0E7902E2025085E002DA8AF /* HelperExtensions.swift in Sources */,
+				4BEF282B20F04C080083279D /* CustomCell.swift in Sources */,
 				B0E7902A2025085E002DA8AF /* LoginViewController.swift in Sources */,
 				1AFCE16120E1632800B37EC6 /* QRScannerController.swift in Sources */,
 				B0E7902F2025085E002DA8AF /* SignUpViewController.swift in Sources */,
@@ -408,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7T5X9X98M4;
+				DEVELOPMENT_TEAM = S2N5936E2J;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,7 +432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7T5X9X98M4;
+				DEVELOPMENT_TEAM = S2N5936E2J;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
