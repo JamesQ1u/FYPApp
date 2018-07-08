@@ -8,16 +8,14 @@
 
 import UIKit
 import Firebase
-struct CellDate {
-    let image : UIImage?
-    let message: String?
-}
-class personalInformViewController: UITableViewController {
+
+
+class personalInformViewController: UIViewController {
     @IBOutlet weak var UID: UITextField!
     @IBOutlet weak var EName: UITextField!
     @IBOutlet weak var CName: UITextField!
     
-    var data = [CellDate]()
+
     
     var urlName:String?
     let db = Firestore.firestore()
@@ -26,11 +24,6 @@ class personalInformViewController: UITableViewController {
         
         super.viewDidLoad()
         UID.text = urlName
-        
-        data=[CellDate.init(image:#imageLiteral(resourceName: "jump") , message: "Noel is good")]
-        
-        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
-
         
 
         // Do any additional setup after loading the view.
@@ -52,10 +45,17 @@ class personalInformViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "name"){
+            let mark = segue.destination as! MarkViewController
+            mark.urlName = self.urlName
+        }
         
-        let mark = segue.destination as! MarkViewController
-        mark.urlName = self.urlName
+        /*if (segue.identifier == "competition"){
+        let competition = segue.destination as! CompetitionViewController
+        competition.urlName = self.urlName
+        }*/
     }
+    
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "name", sender: self)
         
@@ -65,6 +65,15 @@ class personalInformViewController: UITableViewController {
         
     }
     
+    /*@IBAction func competition(_ sender: UIButton){
+        self.performSegue(withIdentifier: "competition", sender: self)
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CompetitionViewController") as! CompetitionViewController
+        self.present(nextViewController, animated: true, completion: nil)
+        
+    }*/
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -72,15 +81,7 @@ class personalInformViewController: UITableViewController {
     }
     
 
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell? {
-        let cell =  self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
-        cell.mainImage = data[indexPath.row].image
-        cell.message = data[indexPath.row].message
-        return cell
-    }
-    override func tableView(_ tableView:UITableView, numberOfRowsInSection Section: Int) -> Int {
-        return data.count
-    }
+  
 
 
 
