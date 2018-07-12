@@ -13,6 +13,12 @@ class QRScannerController: UIViewController {
     
     var urlName = ""
     
+    @IBAction func back(_ sender: Any) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Something Else"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+    }
     @IBOutlet var messageLabel: UILabel!
     
     @IBOutlet var topbar: UIView!
@@ -99,6 +105,9 @@ class QRScannerController: UIViewController {
     
     // MARK: - Helper methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Something Else"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         
         let vc = segue.destination as! personalInformViewController
         vc.urlName=self.urlName

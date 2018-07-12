@@ -25,3 +25,19 @@ class HomeViewController:UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
 }
+extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = " Noel is good"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+        
+    }
+}
