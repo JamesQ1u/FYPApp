@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 
 class personalInformViewController: UIViewController {
-    @IBOutlet weak var UID: UITextField!
-    @IBOutlet weak var EName: UITextField!
-    @IBOutlet weak var CName: UITextField!
+
+    @IBOutlet weak var UID: UILabel!
+    @IBOutlet weak var EName: UILabel!
+    @IBOutlet weak var CName: UILabel!
     @IBOutlet weak var showCompetition: UITableView!
     
     @IBOutlet weak var back: UIBarButtonItem!
@@ -24,6 +25,11 @@ class personalInformViewController: UIViewController {
         
         super.viewDidLoad()
         UID.text = urlName
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func loadData(_ sender: UIButton){
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
@@ -36,13 +42,7 @@ class personalInformViewController: UIViewController {
                 self.CName.text = "\(Cname)"
             }
         }
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
-    
     
   
     
@@ -55,8 +55,9 @@ class personalInformViewController: UIViewController {
         
        
     }
+        
     @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "name", sender: self)
+        self.performSegue(withIdentifier: "UID", sender: self)
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MarkViewController") as! MarkViewController
@@ -70,20 +71,6 @@ class personalInformViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-   
     
 }
 
