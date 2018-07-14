@@ -628,7 +628,7 @@
                     <connections>
                         <outlet property="messageLabel" destination="ozd-wh-Raf" id="Ml1-xr-H9f"/>
                         <outlet property="topbar" destination="K1Q-h0-43v" id="cSx-o2-gv1"/>
-                        <segue destination="Hgz-Dt-oxn" kind="presentation" identifier="UID" id="9PU-15-VJm"/>
+                        <segue destination="Hgz-Dt-oxn" kind="presentation" identifier="name" id="9PU-15-VJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JZ-zR-VwR" userLabel="First Responder" sceneMemberID="firstResponder"/>

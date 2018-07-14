@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class personalInformViewController: UIViewController {
 
@@ -20,7 +21,7 @@ class personalInformViewController: UIViewController {
     
     var urlName:String?
     let db = Firestore.firestore()
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
