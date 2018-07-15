@@ -58,10 +58,6 @@ class personalInformViewController: UIViewController {
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
         
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MarkViewController") as! MarkViewController
-        self.present(nextViewController, animated: true, completion: nil)
-        
     }
     
     
