@@ -59,9 +59,7 @@ class Mark1ViewController: UIViewController {
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
         
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Mark2ViewController") as! Mark2ViewController
-        self.present(nextViewController, animated: true, completion: nil)
+
         
     }
     

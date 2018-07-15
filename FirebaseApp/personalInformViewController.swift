@@ -27,10 +27,6 @@ class personalInformViewController: UIViewController {
         super.viewDidLoad()
         UID.text = urlName
         
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func loadData(_ sender: UIButton){
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
@@ -43,7 +39,9 @@ class personalInformViewController: UIViewController {
                 self.CName.text = "\(Cname)"
             }
         }
+        // Do any additional setup after loading the view.
     }
+    
     
   
     

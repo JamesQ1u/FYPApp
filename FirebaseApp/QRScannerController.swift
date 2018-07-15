@@ -126,9 +126,6 @@ class QRScannerController: UIViewController {
             self.urlName = decodedURL
             self.performSegue(withIdentifier: "name", sender: self)
             
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "personalInformViewController") as! personalInformViewController
-            self.present(nextViewController, animated: true, completion: nil)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
