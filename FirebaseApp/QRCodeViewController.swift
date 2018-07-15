@@ -9,7 +9,11 @@
 import UIKit
 
 class QRCodeViewController: UIViewController {
-
+    
+    static func fromStoryboard(_ storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)) -> QRCodeViewController {
+        let controller = storyboard.instantiateViewController(withIdentifier: "QRCodeViewController") as! QRCodeViewController
+        return controller
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

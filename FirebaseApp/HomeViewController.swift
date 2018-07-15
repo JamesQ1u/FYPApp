@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class HomeViewController:UIViewController {
     
@@ -77,6 +78,9 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let controller = QRCodeViewController.fromStoryboard()
+        self.navigationController?.pushViewController(controller, animated: true)
+
     }
 }

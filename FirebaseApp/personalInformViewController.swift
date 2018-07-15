@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class personalInformViewController: UIViewController {
     @IBOutlet weak var UID: UITextField!
