@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A0D44AC20FB395F005D72E9 /* Mark3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D44AB20FB395F005D72E9 /* Mark3ViewController.swift */; };
+		1A0D44AE20FB5722005D72E9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D44AD20FB5722005D72E9 /* PhotoViewController.swift */; };
+		1A0D44B020FB5992005D72E9 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D44AF20FB5992005D72E9 /* PhotoViewCell.swift */; };
 		1A1DB6E820E22A6100C17283 /* personalInformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */; };
 		1A70227120EFEDDC00D2FB0F /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70227020EFEDDC00D2FB0F /* MarkViewController.swift */; };
 		1ABFBC6D20F9295F007F6F66 /* Mark1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFBC6C20F9295F007F6F66 /* Mark1ViewController.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		00413B73B47BC32850A1C15B /* Pods-FirebaseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseApp/Pods-FirebaseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		1A0D44AB20FB395F005D72E9 /* Mark3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark3ViewController.swift; sourceTree = "<group>"; };
+		1A0D44AD20FB5722005D72E9 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		1A0D44AF20FB5992005D72E9 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = personalInformViewController.swift; sourceTree = "<group>"; };
 		1A70227020EFEDDC00D2FB0F /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		1ABFBC6C20F9295F007F6F66 /* Mark1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark1ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				1AFCE15E20E1632200B37EC6 /* QRCodeViewController.swift */,
 				1AFCE16020E1632700B37EC6 /* QRScannerController.swift */,
 				1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */,
+				1A0D44AD20FB5722005D72E9 /* PhotoViewController.swift */,
+				1A0D44AF20FB5992005D72E9 /* PhotoViewCell.swift */,
 				4BEF282A20F04C080083279D /* CustomCell.swift */,
 				B0E7901620250813002DA8AF /* Main.storyboard */,
 				B0E7901920250813002DA8AF /* Assets.xcassets */,
@@ -218,6 +224,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -231,6 +238,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -275,6 +283,7 @@
 				1AFCE16120E1632800B37EC6 /* QRScannerController.swift in Sources */,
 				B0E7902F2025085E002DA8AF /* SignUpViewController.swift in Sources */,
 				B0E7902C2025085E002DA8AF /* RoundedWhiteButton.swift in Sources */,
+				1A0D44AE20FB5722005D72E9 /* PhotoViewController.swift in Sources */,
 				1AFCE15F20E1632300B37EC6 /* QRCodeViewController.swift in Sources */,
 				B0E7901520250813002DA8AF /* ViewController.swift in Sources */,
 				1A0D44AC20FB395F005D72E9 /* Mark3ViewController.swift in Sources */,
@@ -282,6 +291,7 @@
 				1AFCE15D20E15A5300B37EC6 /* HomeViewController.swift in Sources */,
 				B0E7902D2025085E002DA8AF /* InitialViewController.swift in Sources */,
 				1A70227120EFEDDC00D2FB0F /* MarkViewController.swift in Sources */,
+				1A0D44B020FB5992005D72E9 /* PhotoViewCell.swift in Sources */,
 				1ABFBC6D20F9295F007F6F66 /* Mark1ViewController.swift in Sources */,
 				B0E7901320250813002DA8AF /* AppDelegate.swift in Sources */,
 				B0E7902B2025085E002DA8AF /* MenuViewController.swift in Sources */,
