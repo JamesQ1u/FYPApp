@@ -110,7 +110,7 @@ class QRScannerController: UIViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         
         let vc = segue.destination as! personalInformViewController
-        vc.urlName=self.urlName
+        vc.urlName = self.urlName
 
     }
     

@@ -23,7 +23,9 @@ class personalInformViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         UID.text = urlName
+        
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
