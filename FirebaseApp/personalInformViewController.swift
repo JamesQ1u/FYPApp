@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+
 import FirebaseStorage
 import FirebaseDatabase
+
+
 
 class personalInformViewController: UIViewController {
 
@@ -22,14 +25,19 @@ class personalInformViewController: UIViewController {
     @IBOutlet weak var back: UIBarButtonItem!
     
     var urlName:String?
+    var currentUID: String?
+    
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        UID.text = urlName
         
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
+        UID.text = urlName
+
+         print("Personal UID:" , currentUID!)
+        db.collection("competition").document(currentUID!).collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
+
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
