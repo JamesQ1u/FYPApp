@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class MarkViewController: UIViewController {
 
@@ -44,7 +45,7 @@ class MarkViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func loadData(_ sender: UIButton){
+    @IBAction func updateData(_ sender: UIButton){
         let docData: [String: Any] = [
             
             "spaceViolations": self.spaceViolations.text as Any,
@@ -60,12 +61,25 @@ class MarkViewController: UIViewController {
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
             .collection("participant").document(urlName!).updateData(docData)
         
-        let alertController = UIAlertController(title: "Successful!",
+        /*let alertController = UIAlertController(title: "Successful!",
                                                 message: nil, preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
-        }
+        }*/
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let mark = segue.destination as! Mark1ViewController
+        mark.urlName = self.urlName
+        
+    }
+    @IBAction func mark(_ sender: UIButton){
+        self.performSegue(withIdentifier: "UID", sender: self)
+        
+
+        
     }
     
     @objc func doneClicked(){
