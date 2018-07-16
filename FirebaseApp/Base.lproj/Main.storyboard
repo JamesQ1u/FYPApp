@@ -479,7 +479,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Scan"/>
                                 <connections>
-                                    <segue destination="SP3-I6-toV" kind="presentation" identifier="" id="eOG-Pt-ITU"/>
+                                    <segue destination="SP3-I6-toV" kind="presentation" identifier="uid" id="eOG-Pt-ITU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -591,7 +591,7 @@
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="focus"/>
                                 <connections>
-                                    <segue destination="aBh-mg-E2Q" kind="presentation" id="jiS-6Q-qQn"/>
+                                    <segue destination="aBh-mg-E2Q" kind="presentation" identifier="QRcodeUid" id="jiS-6Q-qQn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -636,6 +636,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="cross"/>
                                         <connections>
+                                            <action selector="cancelBtn:" destination="aBh-mg-E2Q" eventType="touchUpInside" id="4vZ-rb-Q3n"/>
                                             <segue destination="I3s-83-z2V" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="mig-fc-yPx"/>
                                         </connections>
                                     </button>
@@ -671,14 +672,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gbf-nx-bsj"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xJo-ip-MLi">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="udD-K3-OUn"/>
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="41p-af-SFZ">
-                            <connections>
-                                <action selector="handleLogout:" destination="vnq-hK-RH0" id="ayO-6M-gvt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="messageLabel" destination="ozd-wh-Raf" id="Ml1-xr-H9f"/>
                         <outlet property="topbar" destination="K1Q-h0-43v" id="cSx-o2-gv1"/>

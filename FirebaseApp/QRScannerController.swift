@@ -10,15 +10,16 @@ import UIKit
 import AVFoundation
 
 class QRScannerController: UIViewController {
+ var currentUid: String?
+    
+    @IBAction func cancelBtn(_ sender: UIButton) {
+        let controller = QRCodeViewController.fromStoryboard()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     var urlName = ""
     
-//    @IBAction func back(_ sender: Any) {
-//        let backItem = UIBarButtonItem()
-//        backItem.title = "Something Else"
-//        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-//
-//    }
+
     @IBOutlet var messageLabel: UILabel!
     
     @IBOutlet var topbar: UIView!
@@ -43,7 +44,7 @@ class QRScannerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("QRScanner UID:" , currentUid!)
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
@@ -108,10 +109,11 @@ class QRScannerController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "Something Else"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-        
+        if segue.identifier == "name"{
         let vc = segue.destination as! personalInformViewController
         vc.urlName = self.urlName
-
+        vc.currentUID = self.currentUid
+        }
     }
     
     func launchApp(decodedURL: String) {

@@ -19,6 +19,8 @@ class personalInformViewController: UIViewController {
     @IBOutlet weak var back: UIBarButtonItem!
     
     var urlName:String?
+    var currentUID: String?
+    
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -26,8 +28,8 @@ class personalInformViewController: UIViewController {
         super.viewDidLoad()
         
         UID.text = urlName
-        
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0").collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
+         print("Personal UID:" , currentUID!)
+        db.collection("competition").document(currentUID!).collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return

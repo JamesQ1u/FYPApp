@@ -12,11 +12,12 @@ import Firebase
 import FirebaseFirestore
 
 class HomeViewController:UIViewController {
+    var homeUid: String?
     
     var enameArray = [String]()
     var startDateArray = [Date]()
     var uidArray = [String]()
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -60,10 +61,12 @@ class HomeViewController:UIViewController {
         try! Auth.auth().signOut()
         self.dismiss(animated: false, completion: nil)
     }
+    
+   
 }
 
 extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
         cell.textLabel?.text = self.enameArray[indexPath.row]
@@ -79,8 +82,23 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
         tableView.deselectRow(at: indexPath, animated: true)
-        let controller = QRCodeViewController.fromStoryboard()
-        self.navigationController?.pushViewController(controller, animated: true)
-
+//        let controller = QRCodeViewController.fromStoryboard()
+       
+        homeUid = self.uidArray[indexPath.row]
+        print("table view ", self.uidArray[indexPath.row])
+//        self.navigationController?.pushViewController(controller, animated: true)
+        self.performSegue(withIdentifier: "uid", sender: self)
+   
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "uid"{
+        let QRCodeUid = segue.destination as! QRCodeViewController
+        QRCodeUid.currentUid = homeUid!
+            print(QRCodeUid.currentUid!)
+            
+    }
+    
+    
     }
 }

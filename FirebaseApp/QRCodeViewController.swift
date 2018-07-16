@@ -9,6 +9,8 @@
 import UIKit
 
 class QRCodeViewController: UIViewController {
+var currentUid: String?
+    
     
     static func fromStoryboard(_ storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)) -> QRCodeViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "QRCodeViewController") as! QRCodeViewController
@@ -24,8 +26,14 @@ class QRCodeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "QRcodeUid"{
+            let QRCodeUid = segue.destination as! QRScannerController
+            QRCodeUid.currentUid = currentUid!
+            print(QRCodeUid.currentUid!)
+            
+        }
+    }
     
     // MARK: - Navigation
 
