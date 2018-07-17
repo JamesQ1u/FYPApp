@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0ky-cs-2lN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0ky-cs-2lN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -617,13 +617,13 @@
                     <connections>
                         <outlet property="messageLabel" destination="ozd-wh-Raf" id="Ml1-xr-H9f"/>
                         <outlet property="topbar" destination="K1Q-h0-43v" id="cSx-o2-gv1"/>
-                        <segue destination="Hgz-Dt-oxn" kind="presentation" identifier="name" id="9PU-15-VJm"/>
+                        <segue destination="Hgz-Dt-oxn" kind="show" identifier="name" id="wA0-Fa-QS6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JZ-zR-VwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="I3s-83-z2V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6505" y="-412"/>
+            <point key="canvasLocation" x="6236" y="-412"/>
         </scene>
         <!--HeadJudgeScoresheetView Controller-->
         <scene sceneID="Z5m-vx-Ktc">
@@ -815,7 +815,7 @@
                                 <connections>
                                     <action selector="mark:" destination="4tH-Eo-UF0" eventType="touchUpInside" id="FT5-Hq-wGW"/>
                                     <action selector="updateData:" destination="4tH-Eo-UF0" eventType="touchUpInside" id="DHk-MT-Iyq"/>
-                                    <segue destination="VIo-wS-HQN" kind="presentation" identifier="UID" id="uh8-Ve-Wnr"/>
+                                    <segue destination="VIo-wS-HQN" kind="show" identifier="UID" id="Fao-jU-SXX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f6-Vm-PM7">
@@ -893,7 +893,7 @@
                                 <state key="normal" title="mark"/>
                                 <connections>
                                     <action selector="mark:" destination="Hgz-Dt-oxn" eventType="touchUpInside" id="jO2-Dd-AgD"/>
-                                    <segue destination="4tH-Eo-UF0" kind="presentation" identifier="UID" id="tOT-bU-LIj"/>
+                                    <segue destination="4tH-Eo-UF0" kind="show" identifier="UID" id="sOg-6e-j3z"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="RPh-fU-UpB">
@@ -1098,7 +1098,7 @@
                                 <connections>
                                     <action selector="mark:" destination="VIo-wS-HQN" eventType="touchUpInside" id="fCZ-z2-E8O"/>
                                     <action selector="updateData:" destination="VIo-wS-HQN" eventType="touchUpInside" id="uq7-my-RfM"/>
-                                    <segue destination="Zbg-3G-uT6" kind="presentation" identifier="UID" id="zfF-m2-oZi"/>
+                                    <segue destination="Zbg-3G-uT6" kind="show" identifier="UID" id="vAd-aS-M3o"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uw9-bj-Yed" userLabel="Space Violations">
