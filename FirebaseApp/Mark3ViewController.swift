@@ -11,7 +11,8 @@ import Firebase
 import FirebaseFirestore
 
 class Mark3ViewController: UIViewController {
-
+    var urlName:String?
+    
     @IBOutlet weak var multiples: UITextField!
     @IBOutlet weak var displacementSkills: UITextField!
     @IBOutlet weak var spatialDynamics: UITextField!
@@ -28,7 +29,9 @@ class Mark3ViewController: UIViewController {
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
+        
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
+        toolbar.setItems([doneButton], animated: false)
         multiples.inputAccessoryView = toolbar
         displacementSkills.inputAccessoryView = toolbar
         spatialDynamics.inputAccessoryView = toolbar
@@ -54,14 +57,28 @@ class Mark3ViewController: UIViewController {
             ]
         
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
-            .collection("participant").document().updateData(docData)
+            .collection("participant").document(urlName!).updateData(docData)
         
-        let alertController = UIAlertController(title: "Successful!",
-         message: nil, preferredStyle: .alert)
-         self.present(alertController, animated: true, completion: nil)
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-         self.presentedViewController?.dismiss(animated: false, completion: nil)
-         }
+//        let alertController = UIAlertController(title: "Successful!",
+//         message: nil, preferredStyle: .alert)
+//         self.present(alertController, animated: true, completion: nil)
+//         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//         self.presentedViewController?.dismiss(animated: false, completion: nil)
+//         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UID"{
+            let mark = segue.destination as! Mark1ViewController
+            mark.urlName = self.urlName
+            
+        }
+        
+    }
+    
+    @IBAction func mark(_ sender: UIButton){
+        self.performSegue(withIdentifier: "UID", sender: self)
+        
     }
     
     @objc func doneClicked(){
