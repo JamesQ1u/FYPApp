@@ -13,29 +13,38 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseDatabase
 
-
-
 class personalInformViewController: UIViewController {
 
     @IBOutlet weak var UID: UILabel!
     @IBOutlet weak var EName: UILabel!
     @IBOutlet weak var CName: UILabel!
-    @IBOutlet weak var showCompetition: UITableView!
+   
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var back: UIBarButtonItem!
     
     var urlName:String?
     var currentUID: String?
-    
+    var userCompetition = [String]()
+    var counterArray = [String]()
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+//        queryInUserCompetition()
         UID.text = urlName
 
          print("Personal UID:" , currentUID!)
+        struct compItem {
+            let title: String
+            let name: [String]
+            
+            init(title: String, name: [String]){
+                self.title = title
+                self.name = name
+            }
+        }
         db.collection("competition").document(currentUID!).collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
 
             guard let document = documentSnapshot else {
@@ -47,11 +56,32 @@ class personalInformViewController: UIViewController {
             }
             if let Cname = document.data()!["CName"] as? String{
                 self.CName.text = "\(Cname)"
+                print( "Chinese Name:" , self.CName.text!)
             }
+            if let compItem = document.data()!["user_CompetitionItem"] as? compItem{
+                print( "Array:    ===>" , compItem)
+            }
+            self.userCompetition = document.data()!["user_CompetitionItem"] as! [String]
+           
+             self.counterArray.append(document.documentID)
+            
+            self.tableView.reloadData()
         }
+     
         // Do any additional setup after loading the view.
     }
-    
+//    func queryInUserCompetition() {
+//        // [START query_in_category]
+//      db.collection("competition")
+//            .whereField((UID.text!+".userCompetitionItem"), isEqualTo: true)
+//            .getDocuments() { (querySnapshot, err) in
+//                self.userCompetition.append("")
+//                print(self.userCompetition)
+//
+//        }
+        // [END query_in_category]
+//    }
+
     @IBAction func uploadBtnAction(_ sender: UIButton) {
         
         // 建立一個 UIImagePickerController 的實體
@@ -135,13 +165,15 @@ class personalInformViewController: UIViewController {
 extension personalInformViewController:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = " Noel is good"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
+           cell.textLabel?.text = self.userCompetition[indexPath.row]
+
+        print("personal view ", self.userCompetition[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.userCompetition.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
@@ -151,7 +183,15 @@ extension personalInformViewController:UITableViewDataSource, UITableViewDelegat
 }
 
 extension personalInformViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    func resizeImage(image: UIImage) -> UIImage {
+        
+        UIGraphicsBeginImageContext(CGSize(width: 600, height: 800))
+        image.draw(in: CGRect(x: 0, y: 0, width: 600, height: 800))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         var selectedImageFromPicker: UIImage?
@@ -160,7 +200,7 @@ extension personalInformViewController: UIImagePickerControllerDelegate, UINavig
         // 取得從 UIImagePickerController 選擇的檔案
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            selectedImageFromPicker = pickedImage
+            selectedImageFromPicker = resizeImage(image: pickedImage)
         }
         
         // 可以自動產生一組獨一無二的 ID 號碼，方便等一下上傳圖片的命名
