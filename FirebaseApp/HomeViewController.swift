@@ -93,7 +93,7 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "uid"{
-        let QRCodeUid = segue.destination as! QRCodeViewController
+        let QRCodeUid = segue.destination as! QRScannerController
         QRCodeUid.currentUid = homeUid!
             print(QRCodeUid.currentUid!)
             

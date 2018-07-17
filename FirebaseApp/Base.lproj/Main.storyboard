@@ -474,6 +474,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="0cB-Tl-bnQ" id="rN7-QS-qZO"/>
+                        <segue destination="aBh-mg-E2Q" kind="show" identifier="uid" id="68D-XU-bZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-Wg-ciN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,43 +550,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWY-AF-dPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3430" y="113"/>
-        </scene>
-        <!--Code View Controller-->
-        <scene sceneID="Qob-hd-aJN">
-            <objects>
-                <viewController storyboardIdentifier="QRCodeViewController" id="SP3-I6-toV" customClass="QRCodeViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EYI-ES-trv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRc-2l-gaa">
-                                <rect key="frame" x="89" y="34" width="197" height="68.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="50"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-IJ-lgw">
-                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="focus"/>
-                                <connections>
-                                    <segue destination="aBh-mg-E2Q" kind="presentation" identifier="QRcodeUid" id="jiS-6Q-qQn"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tDX-IJ-lgw" firstAttribute="centerY" secondItem="EYI-ES-trv" secondAttribute="centerY" id="0A2-ZF-9O0"/>
-                            <constraint firstItem="MRc-2l-gaa" firstAttribute="top" secondItem="4RN-gP-Dbl" secondAttribute="top" constant="14" id="BiM-Ei-HcJ"/>
-                            <constraint firstItem="MRc-2l-gaa" firstAttribute="centerX" secondItem="4RN-gP-Dbl" secondAttribute="centerX" id="exo-4W-QNk"/>
-                            <constraint firstItem="tDX-IJ-lgw" firstAttribute="centerX" secondItem="4RN-gP-Dbl" secondAttribute="centerX" id="uVj-Z1-yUg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="4RN-gP-Dbl"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kGy-pd-Tsf" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5577" y="-411"/>
         </scene>
         <!--Scanner Controller-->
         <scene sceneID="HsX-Dp-ytA">
@@ -1512,6 +1476,5 @@
         <image name="backArrow" width="25" height="25"/>
         <image name="cross" width="40" height="40"/>
         <image name="firebaselogo" width="187" height="187"/>
-        <image name="focus" width="150" height="150"/>
     </resources>
 </document>
