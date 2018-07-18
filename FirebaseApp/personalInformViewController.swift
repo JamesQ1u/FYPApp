@@ -135,16 +135,25 @@ class personalInformViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UID"{
-        let mark = segue.destination as! MarkViewController
-        mark.urlName = self.urlName
+            let mark = segue.destination as! MarkViewController
+            mark.urlName = self.urlName
         }
         if segue.identifier == "photo"{
             let mark = segue.destination as! PhotoViewController
             mark.urlName = self.urlName
         }
+        if segue.identifier == "fancy"{
+            let fancy = segue.destination as! Mark3ViewController
+            fancy.urlName = self.urlName
+        }
        
     }
-        
+    
+    
+    @IBAction func huayang(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "fancy", sender: self)
+    }
+    
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
         

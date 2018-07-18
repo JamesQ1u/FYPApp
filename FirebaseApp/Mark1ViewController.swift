@@ -10,14 +10,19 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class Mark1ViewController: UIViewController {
+class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
+
+    @IBOutlet weak var b: UIPickerView!
     
     var urlName:String?
     let db = Firestore.firestore()
     
+ 
+    let data = ["0.1","0.5","0.9","1.3","1.7"]
+    let data1 = ["0.1","0.2","0.9","1.3","1.7"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,8 +32,22 @@ class Mark1ViewController: UIViewController {
         toolbar.setItems([doneButton], animated: false)
         technicalPresentationScore.inputAccessoryView = toolbar
         entertainmentValueScore.inputAccessoryView = toolbar
-
-        // Do any additional setup after loading the view.
+        
+        //piker view
+        let a = UIPickerView()
+        let b = UIPickerView()
+        a.delegate = self
+        a.dataSource = self
+        b.delegate = self
+        b.dataSource = self
+        
+        technicalPresentationScore.inputView = a
+        technicalPresentationScore.text = data[0]
+        technicalPresentationScore.tag = 100
+        entertainmentValueScore.inputView = b
+        entertainmentValueScore.text = data1[0]
+        entertainmentValueScore.tag = 100
+        
     }
     
     @IBAction func updateData(_ sender: UIButton){
@@ -48,6 +67,9 @@ class Mark1ViewController: UIViewController {
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
          self.presentedViewController?.dismiss(animated: false, completion: nil)
          }*/
+        let tap = UITapGestureRecognizer(target: self, action: #selector(Mark1ViewController.hideKeyBoard(tapG:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,13 +80,38 @@ class Mark1ViewController: UIViewController {
     }
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
-        
-
-        
+    
     }
     
     @objc func doneClicked(){
         view.endEditing(true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return data.count
+        }
+        return data1.count
+        
+    
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView = UIPickerView("a"){
+            return data[row]
+        }
+        return data1[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let technicalPresentationScore = self.view?.viewWithTag(100) as? UITextField
+        technicalPresentationScore?.text = data[row]
+        let entertainmentValueScore = self.view?.viewWithTag(100) as? UITextField
+        entertainmentValueScore?.text = data1[row]
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,15 +119,9 @@ class Mark1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func hideKeyBoard(tapG:UITapGestureRecognizer){
+        self.view.endEditing(true)
     }
-    */
+    
 
 }
