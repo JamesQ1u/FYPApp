@@ -26,14 +26,14 @@ var currentUid: String?
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "QRcodeUid"{
-            let QRCodeUid = segue.destination as! QRScannerController
-            QRCodeUid.currentUid = currentUid!
-            print(QRCodeUid.currentUid!)
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "QRcodeUid"{
+//            let QRCodeUid = segue.destination as! QRScannerController
+//            QRCodeUid.currentUid = currentUid!
+//            print(QRCodeUid.currentUid!)
+//            
+//        }
+//    }
     
     // MARK: - Navigation
 
