@@ -101,17 +101,20 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView = UIPickerView("a"){
+        if component == 0{
             return data[row]
         }
         return data1[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let technicalPresentationScore = self.view?.viewWithTag(100) as? UITextField
-        technicalPresentationScore?.text = data[row]
-        let entertainmentValueScore = self.view?.viewWithTag(100) as? UITextField
-        entertainmentValueScore?.text = data1[row]
+        if component == 0{
+            //let technicalPresentationScore = self.view?.viewWithTag(100) as? UITextField
+                technicalPresentationScore.text = data[row]
+        }else{
+            //let entertainmentValueScore = self.view?.viewWithTag(100) as? UITextField
+            entertainmentValueScore.text = data1[row]
+        }
     }
     
     override func didReceiveMemoryWarning() {
