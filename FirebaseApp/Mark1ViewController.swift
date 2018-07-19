@@ -10,13 +10,10 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-<<<<<<< HEAD
-class Mark1ViewController: UIViewController {
-    
-=======
+
 class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
 
->>>>>>> new
+
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
 
@@ -33,10 +30,9 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-<<<<<<< HEAD
-=======
+
         //done buuton
->>>>>>> new
+
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
@@ -44,15 +40,12 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         technicalPresentationScore.inputAccessoryView = toolbar
         entertainmentValueScore.inputAccessoryView = toolbar
         
-<<<<<<< HEAD
-        // Do any additional setup after loading the view.
-=======
+
         //textfiled
         technicalPresentationScore.text = data[0]
         entertainmentValueScore.text = data1[0]
 
         
->>>>>>> new
     }
     
     @IBAction func updateData(_ sender: UIButton){
@@ -79,13 +72,7 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
-<<<<<<< HEAD
-        
-        
-        
-=======
-    
->>>>>>> new
+
     }
     
     @objc func doneClicked(){
@@ -142,25 +129,11 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-<<<<<<< HEAD
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-=======
+
 //    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
 //        self.view.endEditing(true)
 //    }
 
     
 
->>>>>>> new
 }
