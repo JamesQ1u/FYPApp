@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestore
 
 class Mark1ViewController: UIViewController {
-
+    
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
     
@@ -20,14 +20,14 @@ class Mark1ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
         toolbar.setItems([doneButton], animated: false)
         technicalPresentationScore.inputAccessoryView = toolbar
         entertainmentValueScore.inputAccessoryView = toolbar
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -36,7 +36,7 @@ class Mark1ViewController: UIViewController {
             
             "technicalPresentationScore": self.technicalPresentationScore.text as Any,
             "entertainmentValueScore": self.entertainmentValueScore.text as Any,
-
+            
             ]
         
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
@@ -49,7 +49,7 @@ class Mark1ViewController: UIViewController {
          self.presentedViewController?.dismiss(animated: false, completion: nil)
          }*/
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let mark = segue.destination as! Mark2ViewController
@@ -59,7 +59,7 @@ class Mark1ViewController: UIViewController {
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
         
-
+        
         
     }
     
@@ -72,15 +72,15 @@ class Mark1ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
