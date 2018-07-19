@@ -186,8 +186,8 @@ extension personalInformViewController:UITableViewDataSource, UITableViewDelegat
 extension personalInformViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func resizeImage(image: UIImage) -> UIImage {
         
-        UIGraphicsBeginImageContext(CGSize(width: 600, height: 800))
-        image.draw(in: CGRect(x: 0, y: 0, width: 600, height: 800))
+        UIGraphicsBeginImageContext(CGSize(width: 408, height: 544))
+        image.draw(in: CGRect(x: 0, y: 0, width: 408, height: 544))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
