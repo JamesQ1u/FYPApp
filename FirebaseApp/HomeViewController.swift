@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestore
+import MediaPlayer
+import AVFoundation
+import FirebaseAuth
+
+
 
 class HomeViewController:UIViewController {
     var homeUid: String?
@@ -17,10 +22,11 @@ class HomeViewController:UIViewController {
     var enameArray = [String]()
     var startDateArray = [Date]()
     var uidArray = [String]()
-
+    var counter : Int = 0
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         super.viewDidLoad()
         
@@ -54,7 +60,15 @@ class HomeViewController:UIViewController {
                 self.tableView.reloadData()
             }
         }
+        /// Volume View
+        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        volumeView.isHidden = false
+        volumeView.alpha = 0.01
+        view.addSubview(volumeView)
         
+        /// Notification Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(self.volumeDidChange(notification:)), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
+
     }
     
     @IBAction func handleLogout(_ sender:Any) {
@@ -62,6 +76,17 @@ class HomeViewController:UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
+ 
+    @objc func volumeDidChange(notification: NSNotification) {
+//        print("VOLUME CHANGING", AVAudioSession.sharedInstance().outputVolume)
+      
+//        let volume = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Float
+        
+               counter = counter + 1
+         print("counter :\(counter)")
+        
+        
+    }
 
 }
 
@@ -98,7 +123,6 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
             print(QRCodeUid.currentUid!)
             
     }
-    
-    
     }
+    
 }

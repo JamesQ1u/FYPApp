@@ -31,6 +31,7 @@ class personalInformViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        
         super.viewDidLoad()
 //        queryInUserCompetition()
         UID.text = urlName
