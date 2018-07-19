@@ -126,7 +126,11 @@ class QRScannerController: UIViewController {
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             
             self.urlName = decodedURL
+            
+            //Stop video capture.
+            self.captureSession.stopRunning()
             self.performSegue(withIdentifier: "name", sender: self)
+            
             
         })
         
