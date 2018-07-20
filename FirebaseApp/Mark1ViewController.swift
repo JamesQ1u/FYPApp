@@ -20,15 +20,9 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var urlName:String?
     let db = Firestore.firestore()
-    
-    let level = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
-    let level1 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]
-    let level2 = ["0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]
-    let level3 = ["1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4"]
-    
-    let levels = ["Basic","Elementary","Intermediate", "Advanced", "Masters"]
-    let data1 = ["0.1","0.2","0.3","0.4"]
-    let data2 = ["0.5","0.6","0.7","0.8"]
+    var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
+    var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +49,8 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         technicalPresentationScore.inputView = a
         entertainmentValueScore.inputView = b
         
-        technicalPresentationScore.text = level1[0]
-        entertainmentValueScore.text = data1[0]
+        technicalPresentationScore.text = "0"
+        entertainmentValueScore.text = "0"
 
         //hide keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(Mark1ViewController.hideKeyboard(tapG:)))
@@ -94,95 +88,82 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
+
             return 2
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var countrows: Int = 10
+        var countrows = database1[component].count
+        
         if pickerView == technicalPresentationScore.inputView {
-            if component == 0{
-                countrows = level.count
-                return countrows
-            }
-            countrows = level1.count
-            return countrows
+            countrows = database[component].count
+           return countrows
             
-        }else if pickerView == entertainmentValueScore.inputView{
-            if component == 0{
-                countrows = levels.count
-                return countrows
-            }
-            countrows = data1.count
-            return countrows
         }
         
         return countrows
-        
-//        if component == 0 {
-//            var countrows : Int = level.count
-//            if pickerView == entertainmentValueScore.inputView{
-//                countrows = self.levels.count
-//            }
-//            return countrows
-//        }
-//        var Scountrows : Int = level1.count
-//        if pickerView == entertainmentValueScore.inputView{
-//            Scountrows = self.data1.count
-//        }
-//        return Scountrows
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == technicalPresentationScore.inputView{
-            if component == 0 {
-                return level[row]
-            }
-            
-            var A = level1[row]
-            
-            if component == 1{
-                
-                if component == 0 && level[0] == "Level 1"{
-                    A = level1[row]
-                }
-                if component == 0 && level[1] == "Level 2"{
-                    A = level2[row]
-                }
-                return A
-            }
-            
-            
+            return database[component][row]
             
         }else if pickerView == entertainmentValueScore.inputView{
-            if component == 0 {
-                return levels[row]
-            }
-            return data1[row]
+            return database1[component][row]
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == technicalPresentationScore.inputView{
-            if component == 0 && row == 0{
-                
-                self.technicalPresentationScore.text = self.level[row]
+            if component == 0{
+                if row == 0{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
+                    self.technicalPresentationScore.inputView?.reloadInputViews()
+                    
+                }else if row == 1{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]]
+                    self.technicalPresentationScore.inputView?.reloadInputViews()
+                }else if row == 2{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4"]]
+                    self.technicalPresentationScore.inputView?.reloadInputViews()
+                }else if row == 3{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["2.5", "2.6", "2.7", "2.8", "2.9", "3.0", "3.1", "3.2"]]
+                    self.technicalPresentationScore.inputView?.reloadInputViews()
+                }else if row == 4{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "4.0"]]
+                    self.technicalPresentationScore.inputView?.reloadInputViews()
+                }
+    
             }else{
-
-                self.technicalPresentationScore.text = self.level1[row]
-                
+                let data = database[component][row]
+                self.technicalPresentationScore.text = data
             }
-            
             
             
         }else if pickerView == entertainmentValueScore.inputView{
             if component == 0{
-                self.entertainmentValueScore.text = self.levels[row]
+                if row == 0{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
+                    self.entertainmentValueScore.inputView?.reloadInputViews()
+                    
+                }else if row == 1{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.5","0.6","0.7","0.8"]]
+                    self.entertainmentValueScore.inputView?.reloadInputViews()
+                }else if row == 2{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.9","1.0","1.1","1.2"]]
+                    self.entertainmentValueScore.inputView?.reloadInputViews()
+                }else if row == 3{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["1.3","1.4","1.5","1.6"]]
+                    self.entertainmentValueScore.inputView?.reloadInputViews()
+                }else if row == 4{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["1.7","1.8","1.9","2.0"]]
+                    self.entertainmentValueScore.inputView?.reloadInputViews()
+                }
+                //technicalPresentationScore.text = self.level[row]
             }else{
-                self.entertainmentValueScore.text = self.data1[row]
+                let data = database1[component][row]
+                self.entertainmentValueScore.text = data
             }
         }
     }

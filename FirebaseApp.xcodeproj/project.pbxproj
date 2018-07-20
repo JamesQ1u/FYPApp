@@ -12,6 +12,7 @@
 		1A0D44B020FB5992005D72E9 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0D44AF20FB5992005D72E9 /* PhotoViewCell.swift */; };
 		1A1DB6E820E22A6100C17283 /* personalInformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */; };
 		1A70227120EFEDDC00D2FB0F /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70227020EFEDDC00D2FB0F /* MarkViewController.swift */; };
+		1A75943821017D2C00F92FB5 /* Speed2MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A75943721017D2C00F92FB5 /* Speed2MarkViewController.swift */; };
 		1ABFBC6D20F9295F007F6F66 /* Mark1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFBC6C20F9295F007F6F66 /* Mark1ViewController.swift */; };
 		1ABFBC6F20F92976007F6F66 /* Mark2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFBC6E20F92976007F6F66 /* Mark2ViewController.swift */; };
 		1AFCE15B20E1534C00B37EC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AFCE15A20E1534C00B37EC6 /* GoogleService-Info.plist */; };
@@ -40,6 +41,7 @@
 		1A0D44AF20FB5992005D72E9 /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
 		1A1DB6E720E22A6100C17283 /* personalInformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = personalInformViewController.swift; sourceTree = "<group>"; };
 		1A70227020EFEDDC00D2FB0F /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
+		1A75943721017D2C00F92FB5 /* Speed2MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed2MarkViewController.swift; sourceTree = "<group>"; };
 		1ABFBC6C20F9295F007F6F66 /* Mark1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark1ViewController.swift; sourceTree = "<group>"; };
 		1ABFBC6E20F92976007F6F66 /* Mark2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark2ViewController.swift; sourceTree = "<group>"; };
 		1AFCE15A20E1534C00B37EC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,9 +128,10 @@
 				B0E7901E20250813002DA8AF /* Info.plist */,
 				1AFCE15A20E1534C00B37EC6 /* GoogleService-Info.plist */,
 				1A70227020EFEDDC00D2FB0F /* MarkViewController.swift */,
+				1A75943721017D2C00F92FB5 /* Speed2MarkViewController.swift */,
+				1A0D44AB20FB395F005D72E9 /* Mark3ViewController.swift */,
 				1ABFBC6C20F9295F007F6F66 /* Mark1ViewController.swift */,
 				1ABFBC6E20F92976007F6F66 /* Mark2ViewController.swift */,
-				1A0D44AB20FB395F005D72E9 /* Mark3ViewController.swift */,
 			);
 			path = FirebaseApp;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				1A0D44B020FB5992005D72E9 /* PhotoViewCell.swift in Sources */,
 				1ABFBC6D20F9295F007F6F66 /* Mark1ViewController.swift in Sources */,
 				B0E7901320250813002DA8AF /* AppDelegate.swift in Sources */,
+				1A75943821017D2C00F92FB5 /* Speed2MarkViewController.swift in Sources */,
 				B0E7902B2025085E002DA8AF /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,11 +442,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2N5936E2J;
+				DEVELOPMENT_TEAM = 7T5X9X98M4;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = noelwong.whl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyp.fyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos11.4;
@@ -458,11 +462,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S2N5936E2J;
+				DEVELOPMENT_TEAM = 7T5X9X98M4;
 				INFOPLIST_FILE = FirebaseApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = noelwong.whl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fyp.fyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos11.4;
