@@ -17,15 +17,18 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
 
-    @IBOutlet weak var a: UIPickerView!
-    @IBOutlet weak var b: UIPickerView!
     
     var urlName:String?
     let db = Firestore.firestore()
     
- 
-    let data = ["0.1","0.5","0.9","1.3","1.7"]
-    let data1 = ["0.1","0.2","0.9","1.3","1.7"]
+    let level = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
+    let level1 = ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]
+    let level2 = ["0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]
+    let level3 = ["1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4"]
+    
+    let levels = ["Basic","Elementary","Intermediate", "Advanced", "Masters"]
+    let data1 = ["0.1","0.2","0.3","0.4"]
+    let data2 = ["0.5","0.6","0.7","0.8"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +45,24 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
 
         //textfiled
-        technicalPresentationScore.text = data[0]
+        let a = UIPickerView()
+        let b = UIPickerView()
+        a.dataSource = self
+        a.delegate = self
+        b.dataSource = self
+        b.delegate = self
+        
+        technicalPresentationScore.inputView = a
+        entertainmentValueScore.inputView = b
+        
+        technicalPresentationScore.text = level1[0]
         entertainmentValueScore.text = data1[0]
 
-        
+        //hide keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(Mark1ViewController.hideKeyboard(tapG:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+
     }
     
     @IBAction func updateData(_ sender: UIButton){
@@ -59,9 +76,6 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
             .collection("participant").document(urlName!).updateData(docData)
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(Mark1ViewController.hideKeyboard(tapG:)))
-//        tap.cancelsTouchesInView = false
-//        self.view.addGestureRecognizer(tap)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,46 +95,95 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-            return 1
+            return 2
         
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        var countrows : Int = data.count
-        if pickerView == b{
-            countrows = self.data1.count
+        var countrows: Int = 10
+        if pickerView == technicalPresentationScore.inputView {
+            if component == 0{
+                countrows = level.count
+                return countrows
+            }
+            countrows = level1.count
+            return countrows
+            
+        }else if pickerView == entertainmentValueScore.inputView{
+            if component == 0{
+                countrows = levels.count
+                return countrows
+            }
+            countrows = data1.count
+            return countrows
         }
+        
         return countrows
+        
+//        if component == 0 {
+//            var countrows : Int = level.count
+//            if pickerView == entertainmentValueScore.inputView{
+//                countrows = self.levels.count
+//            }
+//            return countrows
+//        }
+//        var Scountrows : Int = level1.count
+//        if pickerView == entertainmentValueScore.inputView{
+//            Scountrows = self.data1.count
+//        }
+//        return Scountrows
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == b{
-            let titleRow = data1[row]
-            return titleRow
-        }else if pickerView == a{
-            let titleRow = data[row]
-            return titleRow
+        if pickerView == technicalPresentationScore.inputView{
+            if component == 0 {
+                return level[row]
+            }
+            
+            var A = level1[row]
+            
+            if component == 1{
+                
+                if component == 0 && level[0] == "Level 1"{
+                    A = level1[row]
+                }
+                if component == 0 && level[1] == "Level 2"{
+                    A = level2[row]
+                }
+                return A
+            }
+            
+            
+            
+        }else if pickerView == entertainmentValueScore.inputView{
+            if component == 0 {
+                return levels[row]
+            }
+            return data1[row]
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == b{
+        if pickerView == technicalPresentationScore.inputView{
+            if component == 0 && row == 0{
+                
+                self.technicalPresentationScore.text = self.level[row]
+            }else{
+
+                self.technicalPresentationScore.text = self.level1[row]
+                
+            }
             
-                self.technicalPresentationScore.text = self.data1[row]
-                self.b.isHidden = true
-        }else if pickerView == a{
             
-                self.entertainmentValueScore.text = self.data[row]
-                self.a.isHidden = true
-        }
-    }
-    func textFieldDidBeginEditing(_ textField:UITextField){
-        if(textField == self.technicalPresentationScore){
-            self.a.isHidden = false
-        }else if (textField == self.entertainmentValueScore){
-            self.b.isHidden = false
+            
+        }else if pickerView == entertainmentValueScore.inputView{
+            if component == 0{
+                self.entertainmentValueScore.text = self.levels[row]
+            }else{
+                self.entertainmentValueScore.text = self.data1[row]
+            }
         }
     }
 
@@ -130,9 +193,9 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         // Dispose of any resources that can be recreated.
     }
 
-//    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
-//        self.view.endEditing(true)
-//    }
+    @objc func hideKeyboard(tapG:UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
 
     
 
