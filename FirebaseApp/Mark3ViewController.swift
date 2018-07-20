@@ -33,6 +33,10 @@ class Mark3ViewController: UIViewController {
         timeViolations.inputAccessoryView = toolbar
         spaceViolations.inputAccessoryView = toolbar
         accuracyDeductions.inputAccessoryView = toolbar
+        
+        timeViolations.text = "0"
+        spaceViolations.text = "0"
+        accuracyDeductions.text = "0"
 
         // Do any additional setup after loading the view.
     }
