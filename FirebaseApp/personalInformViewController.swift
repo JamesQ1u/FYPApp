@@ -28,7 +28,8 @@ class personalInformViewController: UIViewController {
     var userCompetition = [String]()
     var counterArray = [String]()
     let db = Firestore.firestore()
-    
+    var currentItemType: String = ""
+
     override func viewDidLoad() {
         
         
@@ -132,13 +133,24 @@ class personalInformViewController: UIViewController {
         // 當使用者按下 uploadBtnAction 時會 present 剛剛建立好的三個 UIAlertAction 動作與
         present(imagePickerAlertController, animated: true, completion: nil)
     }
-  
+    
+    fileprivate func getCurrentItemType(_ indexPath: IndexPath) {
+        let currentSelectItem: String =  self.userCompetition[indexPath.row]
+        
+        //        print("Selected ltem = ", currentSelectItem)
+        
+        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem).addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            self.currentItemType = document.data()!["areaType"] as! String
+            print("currentItemType : ",self.currentItemType)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "UID"{
-            let mark = segue.destination as! MarkViewController
-            mark.urlName = self.urlName
-        }
+   
         if segue.identifier == "photo"{
             let mark = segue.destination as! PhotoViewController
             mark.urlName = self.urlName
@@ -146,6 +158,10 @@ class personalInformViewController: UIViewController {
         if segue.identifier == "fancy"{
             let fancy = segue.destination as! Mark3ViewController
             fancy.urlName = self.urlName
+        }
+        if segue.identifier == "speed"{
+            let speed = segue.destination as! MarkViewController
+            speed.urlName = self.urlName
         }
        
     }
@@ -187,6 +203,29 @@ extension personalInformViewController:UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
+        var currentItemType_TableView : String?
+        let currentSelectItem: String =  self.userCompetition[indexPath.row]
+        
+        //        print("Selected ltem = ", currentSelectItem)
+        
+        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem).addSnapshotListener { documentSnapshot, error in
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            currentItemType_TableView = document.data()!["areaType"] as? String
+            print("currentItemType_TableView in db : ",currentItemType_TableView!)
+            if (currentItemType_TableView == "speed"){
+                self.performSegue(withIdentifier: "speed", sender: self)
+            }
+            else{
+                self.performSegue(withIdentifier: "fancy", sender: self)
+            }
+        }
+        
+       
+       
+        
         
     }
     
