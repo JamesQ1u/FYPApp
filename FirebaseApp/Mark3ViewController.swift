@@ -46,8 +46,7 @@ class Mark3ViewController: UIViewController {
             
             ]
         
-        db.collection("competition").document(currentUID!)
-            .collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
         
     }
     
