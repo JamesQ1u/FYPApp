@@ -17,10 +17,11 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     @IBOutlet weak var difficultyScore: UITextField!
     @IBOutlet weak var densityScore: UITextField!
-    private let dataSource = ["0.1","0.9","1.7","2.5","3.3"]
-    private let dataSource1 = ["0.1","0.5","0.9","1.3","1.7"]
+
     var urlName:String?
     let db = Firestore.firestore()
+    var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
+    var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,8 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         difficultyScore.inputView = a
         densityScore.inputView = b
         
-        difficultyScore.text = dataSource[0]
-        densityScore.text = dataSource1[0]
+        difficultyScore.text = "0"
+        densityScore.text = "0"
         
         // hide keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(Mark2ViewController.hideKeyboard(tapG:)))
@@ -53,33 +54,81 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var countrows : Int = dataSource.count
-        if pickerView == difficultyScore.inputView{
-            countrows = self.dataSource1.count
+        var countrows = database1[component].count
+        
+        if pickerView == difficultyScore.inputView {
+            countrows = database[component].count
+            return countrows
+            
         }
         
-            return countrows
+        return countrows
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == difficultyScore.inputView{
-            return dataSource[row]
+            return database[component][row]
+            
         }else if pickerView == densityScore.inputView{
-            return dataSource1[row]
+            return database1[component][row]
         }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == difficultyScore.inputView{
-            self.difficultyScore.text = self.dataSource[row]
+            if component == 0{
+                if row == 0{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
+                    self.difficultyScore.inputView?.reloadInputViews()
+                    
+                }else if row == 1{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6"]]
+                    self.difficultyScore.inputView?.reloadInputViews()
+                }else if row == 2{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4"]]
+                    self.difficultyScore.inputView?.reloadInputViews()
+                }else if row == 3{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["2.5", "2.6", "2.7", "2.8", "2.9", "3.0", "3.1", "3.2"]]
+                    self.difficultyScore.inputView?.reloadInputViews()
+                }else if row == 4{
+                    database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "4.0"]]
+                    self.difficultyScore.inputView?.reloadInputViews()
+                }
+                
+            }else{
+                let data = database[component][row]
+                self.difficultyScore.text = data
+            }
         }else if pickerView == densityScore.inputView{
-            self.densityScore.text = self.dataSource1[row]
+            if component == 0{
+                if row == 0{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
+                    self.densityScore.inputView?.reloadInputViews()
+                    
+                }else if row == 1{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.5","0.6","0.7","0.8"]]
+                    self.densityScore.inputView?.reloadInputViews()
+                }else if row == 2{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.9","1.0","1.1","1.2"]]
+                    self.densityScore.inputView?.reloadInputViews()
+                }else if row == 3{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["1.3","1.4","1.5","1.6"]]
+                    self.densityScore.inputView?.reloadInputViews()
+                }else if row == 4{
+                    database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["1.7","1.8","1.9","2.0"]]
+                    self.densityScore.inputView?.reloadInputViews()
+                }
+                //technicalPresentationScore.text = self.level[row]
+            }else{
+                let data = database1[component][row]
+                self.densityScore.text = data
+            }
         }
     }
     
