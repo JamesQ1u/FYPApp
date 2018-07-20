@@ -12,11 +12,9 @@ import FirebaseFirestore
 
 class Mark3ViewController: UIViewController {
     var urlName:String?
-    
-    @IBOutlet weak var multiples: UITextField!
-    @IBOutlet weak var displacementSkills: UITextField!
-    @IBOutlet weak var spatialDynamics: UITextField!
-    @IBOutlet weak var ropeManipulationSkill: UITextField!
+    var currentSelectItem:String?
+    var currentUID:String?
+
     
     @IBOutlet weak var timeViolations: UITextField!
     @IBOutlet weak var spaceViolations: UITextField!
@@ -32,10 +30,6 @@ class Mark3ViewController: UIViewController {
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
         toolbar.setItems([doneButton], animated: false)
-        multiples.inputAccessoryView = toolbar
-        displacementSkills.inputAccessoryView = toolbar
-        spatialDynamics.inputAccessoryView = toolbar
-        ropeManipulationSkill.inputAccessoryView = toolbar
         timeViolations.inputAccessoryView = toolbar
         spaceViolations.inputAccessoryView = toolbar
         accuracyDeductions.inputAccessoryView = toolbar
@@ -46,30 +40,21 @@ class Mark3ViewController: UIViewController {
     @IBAction func updateData(_ sender: UIButton){
         let docData: [String: Any] = [
             
-            "multiples": self.multiples.text as Any,
-            "displacementSkills": self.displacementSkills.text as Any,
-            "spatialDynamics": self.spatialDynamics.text as Any,
-            "ropeManipulationSkill": self.ropeManipulationSkill.text as Any,
             "timeViolations": self.timeViolations.text as Any,
             "spaceViolations": self.spaceViolations.text as Any,
             "accuracyDeductions": self.accuracyDeductions.text as Any,
             
             ]
         
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
-            .collection("participant").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!)
+            .collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
         
-//        let alertController = UIAlertController(title: "Successful!",
-//         message: nil, preferredStyle: .alert)
-//         self.present(alertController, animated: true, completion: nil)
-//         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//         self.presentedViewController?.dismiss(animated: false, completion: nil)
-//         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UID"{
             let mark = segue.destination as! Mark1ViewController
+            mark.currentUID = self.currentUID
             mark.urlName = self.urlName
             
         }
@@ -80,6 +65,22 @@ class Mark3ViewController: UIViewController {
         self.performSegue(withIdentifier: "UID", sender: self)
         
     }
+    @IBAction func TimeViolations(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        timeViolations.text = String(number)
+    }
+    @IBAction func SpaceViolations(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        spaceViolations.text = String(number)
+    }
+    @IBAction func AccuracyDeductions(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        accuracyDeductions.text = String(number)
+    }
+    
     
     @objc func doneClicked(){
         view.endEditing(true)

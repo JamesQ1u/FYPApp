@@ -19,6 +19,8 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     
     var urlName:String?
+    var currentSelectItem:String?
+    var currentUID:String?
     let db = Firestore.firestore()
     var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
     var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
@@ -67,14 +69,15 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             
             ]
         
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
-            .collection("participant").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!)
+            .collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let mark = segue.destination as! Mark2ViewController
+        mark.currentUID = self.currentUID
         mark.urlName = self.urlName
         
     }

@@ -19,7 +19,10 @@ class MarkViewController: UIViewController {
 
     
     
+    
     var urlName:String?
+    var currentSelectItem:String?
+    var currentUID:String?
     let db = Firestore.firestore()
     
     
@@ -34,6 +37,9 @@ class MarkViewController: UIViewController {
                 falseStart.inputAccessoryView = toolbar
                 falseSwitch.inputAccessoryView = toolbar
 
+        spaceViolations.text = "0"
+        falseStart.text = "0"
+        falseSwitch.text = "0"
 
         // Do any additional setup after loading the view.
     }
@@ -48,8 +54,8 @@ class MarkViewController: UIViewController {
 
         ]
         
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
-            .collection("participant").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!)
+            .collection("competitionItem").document("四人Quadruple4x30secOpen二重速度跳接力比賽9-12").collection("participantCollection").document(urlName!).updateData(docData)
         
         let alertController = UIAlertController(title: "Successful!",
                                                 message: nil, preferredStyle: .alert)
@@ -62,14 +68,35 @@ class MarkViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UID"{
             let mark = segue.destination as! Speed2MarkViewController
+            mark.currentUID = self.currentUID
+            mark.currentSelectItem = self.currentSelectItem
             mark.urlName = self.urlName
             
         }
         
     }
+    @IBAction func SpaceViolations(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        spaceViolations.text = String(number)
+    }
+    
+    @IBAction func FalseStart(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        falseStart.text = String(number)
+    }
+    
+    @IBAction func FalseSwitch(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        falseSwitch.text = String(number)
+    }
+    
+    
     
     @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
+        self.performSegue(withIdentifier: "UID", sender: nil)
         
     }
 

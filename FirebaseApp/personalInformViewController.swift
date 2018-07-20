@@ -21,7 +21,6 @@ class personalInformViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var back: UIBarButtonItem!
     
     var urlName:String?
     var currentUID: String?
@@ -156,25 +155,21 @@ class personalInformViewController: UIViewController {
             mark.urlName = self.urlName
         }
         if segue.identifier == "fancy"{
-            let fancy = segue.destination as! Mark3ViewController
+            let fancy = segue.destination as! Mark4ViewController
+            fancy.currentUID = self.currentUID
+            fancy.currentSelectItem = self.currentItemType
             fancy.urlName = self.urlName
         }
         if segue.identifier == "speed"{
             let speed = segue.destination as! MarkViewController
+            speed.currentUID = self.currentUID
+            speed.currentSelectItem = self.currentItemType
             speed.urlName = self.urlName
         }
        
     }
     
     
-    @IBAction func huayang(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "fancy", sender: self)
-    }
-    
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
-        
-    }
     
     @IBAction func photo(_ sender: UIButton){
         self.performSegue(withIdentifier: "photo", sender: self)

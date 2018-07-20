@@ -17,6 +17,8 @@ class Speed2MarkViewController: UIViewController {
     @IBOutlet weak var techinicalJudge: UITextField!
     
     var urlName:String?
+    var currentSelectItem:String?
+    var currentUID:String?
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -30,6 +32,10 @@ class Speed2MarkViewController: UIViewController {
         judge3.inputAccessoryView = toolbar
         techinicalJudge.inputAccessoryView = toolbar
         // Do any additional setup after loading the view.
+        judge1.text = "0"
+        judge2.text = "0"
+        judge3.text = "0"
+        techinicalJudge.text = "0"
     }
 
     @IBAction func updateData(_ sender: UIButton){
@@ -41,8 +47,7 @@ class Speed2MarkViewController: UIViewController {
             "techinicalJudge": self.techinicalJudge.text as Any,
             ]
         
-        db.collection("competition").document("jTtJBKOrspSdd1iNaOi0")
-            .collection("participant").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("competitionItem").document("四人Quadruple4x30secOpen二重速度跳接力比賽9-12").collection("participantCollection").document(urlName!).updateData(docData)
         
         let alertController = UIAlertController(title: "Successful!",
                                                 message: nil, preferredStyle: .alert)
@@ -50,6 +55,27 @@ class Speed2MarkViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
+    }
+    @IBAction func Judge1(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        judge1.text = String(number)
+    }
+    @IBAction func Judge2(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        judge2.text = String(number)
+    }
+    @IBAction func Judge3(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        judge3.text = String(number)
+    }
+
+    @IBAction func TechnicalJudge(_ sender: UIStepper) {
+        var number = 0
+        number = Int(sender.value)
+        techinicalJudge.text = String(number)
     }
     
     @objc func doneClicked(){
