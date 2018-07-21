@@ -69,7 +69,7 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             
             ]
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
     }
     
@@ -78,6 +78,7 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let mark = segue.destination as! Mark2ViewController
         mark.currentUID = self.currentUID
         mark.urlName = self.urlName
+        mark.currentSelectItem  = self.currentSelectItem
         
     }
     @IBAction func mark(_ sender: UIButton){
