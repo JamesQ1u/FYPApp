@@ -16,7 +16,8 @@ class MarkViewController: UIViewController {
     @IBOutlet weak var falseStart: UITextField!
     @IBOutlet weak var falseSwitch: UITextField!
 
-
+    @IBOutlet weak var Event: UILabel!
+    
     
     
     
@@ -40,6 +41,13 @@ class MarkViewController: UIViewController {
         spaceViolations.text = "0"
         falseStart.text = "0"
         falseSwitch.text = "0"
+        
+        spaceViolations.keyboardType = .numberPad
+        falseStart.keyboardType = .numberPad
+        falseSwitch.keyboardType = .numberPad
+        
+        Event.text = currentSelectItem!
+        
 
         // Do any additional setup after loading the view.
     }

@@ -20,6 +20,7 @@ class Mark3ViewController: UIViewController {
     @IBOutlet weak var spaceViolations: UITextField!
     @IBOutlet weak var accuracyDeductions: UITextField!
     
+    @IBOutlet weak var Event: UILabel!
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -37,7 +38,12 @@ class Mark3ViewController: UIViewController {
         timeViolations.text = "0"
         spaceViolations.text = "0"
         accuracyDeductions.text = "0"
-
+        
+        timeViolations.keyboardType = .numberPad
+        spaceViolations.keyboardType = .numberPad
+        accuracyDeductions.keyboardType = .numberPad
+        
+        Event.text = currentSelectItem!
         // Do any additional setup after loading the view.
     }
     

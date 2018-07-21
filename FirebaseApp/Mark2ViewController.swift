@@ -18,6 +18,7 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var difficultyScore: UITextField!
     @IBOutlet weak var densityScore: UITextField!
 
+    @IBOutlet weak var Event: UILabel!
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
@@ -53,6 +54,8 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         let tap = UITapGestureRecognizer(target: self, action: #selector(Mark2ViewController.hideKeyboard(tapG:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        Event.text = currentSelectItem!
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

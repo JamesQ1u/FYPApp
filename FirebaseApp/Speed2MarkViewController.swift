@@ -16,6 +16,8 @@ class Speed2MarkViewController: UIViewController {
     @IBOutlet weak var judge3: UITextField!
     @IBOutlet weak var techinicalJudge: UITextField!
     
+    @IBOutlet weak var Event: UILabel!
+    
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
@@ -36,6 +38,13 @@ class Speed2MarkViewController: UIViewController {
         judge2.text = "0"
         judge3.text = "0"
         techinicalJudge.text = "0"
+        
+        judge1.keyboardType = .numberPad
+        judge2.keyboardType = .numberPad
+        judge3.keyboardType = .numberPad
+        techinicalJudge.keyboardType = .numberPad
+        
+        Event.text = currentSelectItem!
     }
 
     @IBAction func updateData(_ sender: UIButton){

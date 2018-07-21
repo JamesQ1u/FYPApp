@@ -17,6 +17,7 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
 
+    @IBOutlet weak var Event: UILabel!
     
     var urlName:String?
     var currentSelectItem:String?
@@ -58,6 +59,8 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let tap = UITapGestureRecognizer(target: self, action: #selector(Mark1ViewController.hideKeyboard(tapG:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        Event.text = currentSelectItem!
 
     }
     

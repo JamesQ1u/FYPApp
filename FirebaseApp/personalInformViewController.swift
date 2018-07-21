@@ -64,14 +64,14 @@ class personalInformViewController: UIViewController {
                 print( "Chinese Name:" , self.CName.text!)
             }
             if let Bdate = document.data()!["BDate"] as? Date{
-//                let formatGet = DateFormatter()
-//                formatGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//                let formatPrint = DateFormatter()
-//                formatPrint.dateFormat = "dd MM,yyyy"
-//                let formatter = DateFormatter()
-//                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+                //let formatter = DateFormatter()
+                //Bdate.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 
-                
+//                let a = Bdate.string(from: Date())
+//                let b = Bdate.date(from: a)
+//                Bdate.dateFormat = "dd-MM-yyyy"
+//                let lastDate = Bdate.string(from: myDate!)
 //                let date = formatGet.string(from: Bdate)
 //                let bdate = formatPrint.date(from: date)
                 self.birthDate.text = "\(Bdate)"

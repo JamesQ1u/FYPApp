@@ -19,6 +19,7 @@ class Mark4ViewController: UIViewController {
     @IBOutlet weak var selectSpatialDynamics: UISegmentedControl!
     @IBOutlet weak var selectRopeManipulationSkill: UISegmentedControl!
     
+    @IBOutlet weak var Event: UILabel!
     
     var urlName:String?
     var currentUID: String?
@@ -36,16 +37,7 @@ class Mark4ViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
-        toolbar.setItems([doneButton], animated: false)
-//        multiples.inputAccessoryView = toolbar
-//        displacementSkills.inputAccessoryView = toolbar
-//        spatialDynamics.inputAccessoryView = toolbar
-//        ropeManipulationSkill.inputAccessoryView = toolbar
-        
-        
-        
-        // Do any additional setup after loading the view.
+        Event.text = currentSelectItem!
     }
     
     @IBAction func updateData(_ sender: UIButton){
