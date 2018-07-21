@@ -62,6 +62,8 @@ class MarkViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
+            
+            self.performSegue(withIdentifier: "UID", sender: nil)
         }
     }
     
@@ -93,13 +95,6 @@ class MarkViewController: UIViewController {
         falseSwitch.text = String(number)
     }
     
-    
-    
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: nil)
-        
-    }
-
     @objc func doneClicked(){
         view.endEditing(true)
     }
