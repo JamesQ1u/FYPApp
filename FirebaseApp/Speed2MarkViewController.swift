@@ -23,8 +23,10 @@ class Speed2MarkViewController: UIViewController {
     var currentUID:String?
     let db = Firestore.firestore()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
@@ -48,12 +50,14 @@ class Speed2MarkViewController: UIViewController {
     }
 
     @IBAction func updateData(_ sender: UIButton){
+        
         let docData: [String: Any] = [
             
             "judge1": self.judge1.text as Any,
             "judge2": self.judge2.text as Any,
             "judge3": self.judge3.text as Any,
             "techinicalJudge": self.techinicalJudge.text as Any,
+            "JudgeId": Auth.auth().currentUser?.uid as Any,
             ]
         
         db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
@@ -63,6 +67,9 @@ class Speed2MarkViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
+
+        
+            
         }
     }
     @IBAction func Judge1(_ sender: UIStepper) {
@@ -87,6 +94,7 @@ class Speed2MarkViewController: UIViewController {
         techinicalJudge.text = String(number)
     }
     
+
     @objc func doneClicked(){
         view.endEditing(true)
     }
