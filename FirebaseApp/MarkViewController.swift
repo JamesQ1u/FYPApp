@@ -28,8 +28,7 @@ class MarkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
+
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
@@ -57,12 +56,14 @@ class MarkViewController: UIViewController {
         
         db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
-        let alertController = UIAlertController(title: "Successful!",
-                                                message: nil, preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
-        }
+//        let alertController = UIAlertController(title: "Successful!",
+//                                                message: nil, preferredStyle: .alert)
+//        self.present(alertController, animated: true, completion: nil)
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//            self.presentedViewController?.dismiss(animated: false, completion: nil)
+//
+            self.performSegue(withIdentifier: "UID", sender: nil)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,13 +94,6 @@ class MarkViewController: UIViewController {
         falseSwitch.text = String(number)
     }
     
-    
-    
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: nil)
-        
-    }
-
     @objc func doneClicked(){
         view.endEditing(true)
     }
