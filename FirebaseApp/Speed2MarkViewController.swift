@@ -47,7 +47,7 @@ class Speed2MarkViewController: UIViewController {
             "techinicalJudge": self.techinicalJudge.text as Any,
             ]
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document("四人Quadruple4x30secOpen二重速度跳接力比賽9-12").collection("participantCollection").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
         let alertController = UIAlertController(title: "Successful!",
                                                 message: nil, preferredStyle: .alert)

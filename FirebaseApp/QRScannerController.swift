@@ -107,7 +107,7 @@ class QRScannerController: UIViewController {
     // MARK: - Helper methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
-        backItem.title = "Something Else"
+        backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         if segue.identifier == "name"{
         let vc = segue.destination as! personalInformViewController

@@ -211,6 +211,7 @@ extension personalInformViewController:UITableViewDataSource, UITableViewDelegat
             currentItemType_TableView = document.data()!["areaType"] as? String
             print("currentItemType_TableView in db : ",currentItemType_TableView!)
             if (currentItemType_TableView == "speed"){
+                self.currentItemType = currentSelectItem
                 self.performSegue(withIdentifier: "speed", sender: self)
             }
             else{
