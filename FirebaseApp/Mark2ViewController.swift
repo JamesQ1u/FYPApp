@@ -22,6 +22,18 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
+    var content:String?
+    
+    var multiples:String?
+    var displacementSkills:String?
+    var spatialDynamics:String?
+    var ropeManipulationSkill:String?
+    var timeViolations:String?
+    var spaceViolations:String?
+    var accuracyDeductions:String?
+    var technicalPresentationScore:String?
+    var entertainmentValueScore:String?
+    
     let db = Firestore.firestore()
     var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
     var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
@@ -138,22 +150,55 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "difficultyScore": self.difficultyScore.text as Any,
-            "densityScore": self.densityScore.text as Any,
-            "JudgeId": Auth.auth().currentUser?.uid as Any,
-            
-            ]
+
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+        content = """
+        Multiples: \(String(describing: multiples!))
+        Displacement Skills: \(String(describing: displacementSkills!))
+        Spatial Dynamics: \(String(describing: spatialDynamics!))
+        Rope ManipulationSkill: \(String(describing: ropeManipulationSkill!))
+        Time Violations: \(String(describing: timeViolations!))
+        Space Violations: \(String(describing: spaceViolations!))
+        Accuracy Deductions: \(String(describing: accuracyDeductions!))
+        Technical Presentation Score: \(String(describing: technicalPresentationScore!))
+        Entertainment ValueScore: \(String(describing: entertainmentValueScore!))
+        Difficulty Score: \(String(describing: self.difficultyScore.text!))
+        Density Score: \(String(describing: self.densityScore.text!))
+        """
         
-        let alertController = UIAlertController(title: "Successful!",
-         message: nil, preferredStyle: .alert)
-         self.present(alertController, animated: true, completion: nil)
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-         self.presentedViewController?.dismiss(animated: false, completion: nil)
-         }
+        let confirmAlert = UIAlertController(title: "Confirmation", message: self.content, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "Confirm", style: .default){(Void) in
+            let docData: [String: Any] = [
+                
+                "multiples": self.multiples as Any,
+                "displacementSkills": self.displacementSkills as Any,
+                "spatialDynamics": self.spatialDynamics as Any,
+                "ropeManipulationSkill": self.ropeManipulationSkill as Any,
+                "timeViolations": self.timeViolations as Any,
+                "spaceViolations": self.spaceViolations as Any,
+                "accuracyDeductions": self.accuracyDeductions as Any,
+                "technicalPresentationScore": self.technicalPresentationScore as Any,
+                "entertainmentValueScore": self.entertainmentValueScore as Any,
+                "difficultyScore": self.difficultyScore.text as Any,
+                "densityScore": self.densityScore.text as Any,
+                "JudgeId": Auth.auth().currentUser?.uid as Any,
+                
+                ]
+            
+            self.db.collection("competition").document(self.currentUID!).collection("competitionItem").document(self.currentSelectItem!).collection("participantCollection").document(self.urlName!).updateData(docData)
+
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default){(Void) in
+            
+            confirmAlert.dismiss(animated: true, completion: nil)
+        }
+        
+        confirmAlert.addAction(confirm)
+        confirmAlert.addAction(cancel)
+        present(confirmAlert, animated: true, completion: nil)
+        
     }
     
     

@@ -22,7 +22,11 @@ class Speed2MarkViewController: UIViewController {
     var currentSelectItem:String?
     var currentUID:String?
     let db = Firestore.firestore()
+    var content:String?
     
+    var spaceViolations:String?
+    var falseStart:String?
+    var falseSwitch:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,30 +51,51 @@ class Speed2MarkViewController: UIViewController {
         techinicalJudge.keyboardType = .numberPad
         
         Event.text = currentSelectItem!
+        
+        //alert controller size
+
+        
     }
 
     @IBAction func updateData(_ sender: UIButton){
         
-        let docData: [String: Any] = [
+        
+        content = """
+        Space Violations: \(String(describing: spaceViolations!))
+        False Start: \(String(describing: falseStart!))
+        False Switch: \(String(describing: falseSwitch!))
+        Judge1: \(String(describing: self.judge1.text!))
+        Judge2: \(String(describing: self.judge2.text!))
+        Judge3: \(String(describing: self.judge3.text!))
+        Techinical Judge: \(String(describing: self.techinicalJudge.text!))
+        """
+        
+        let confirmAlert = UIAlertController(title: "Confirmation", message: self.content, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "Confirm", style: .default){(Void) in
+            let docData: [String: Any] = [
+                "spaceViolations": self.spaceViolations as Any,
+                "falseStart": self.falseStart as Any,
+                "falseSwitch": self.falseSwitch as Any,
+                "judge1": self.judge1.text as Any,
+                "judge2": self.judge2.text as Any,
+                "judge3": self.judge3.text as Any,
+                "techinicalJudge": self.techinicalJudge.text as Any,
+                "JudgeId": Auth.auth().currentUser?.uid as Any,
+                ]
             
-            "judge1": self.judge1.text as Any,
-            "judge2": self.judge2.text as Any,
-            "judge3": self.judge3.text as Any,
-            "techinicalJudge": self.techinicalJudge.text as Any,
-            "JudgeId": Auth.auth().currentUser?.uid as Any,
-            ]
-        
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
-        
-        let alertController = UIAlertController(title: "Successful!",
-                                                message: nil, preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
-
-        
-            
+            self.db.collection("competition").document(self.currentUID!).collection("competitionItem").document(self.currentSelectItem!).collection("participantCollection").document(self.urlName!).updateData(docData)
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default){(Void) in
+            
+            confirmAlert.dismiss(animated: true, completion: nil)
+        }
+        
+        confirmAlert.addAction(confirm)
+        confirmAlert.addAction(cancel)
+        present(confirmAlert, animated: true, completion: nil)
+        
     }
     @IBAction func Judge1(_ sender: UIStepper) {
         var number = 0

@@ -99,6 +99,11 @@ class QRScannerController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Start video capture.
+        captureSession.startRunning()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -23,6 +23,16 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var currentSelectItem:String?
     var currentUID:String?
     let db = Firestore.firestore()
+    var multiples:String?
+    var displacementSkills:String?
+    var spatialDynamics:String?
+    var ropeManipulationSkill:String?
+    var timeViolations:String?
+    var spaceViolations:String?
+    var accuracyDeductions:String?
+
+    
+    
     var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
     var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
 
@@ -65,14 +75,17 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "technicalPresentationScore": self.technicalPresentationScore.text as Any,
-            "entertainmentValueScore": self.entertainmentValueScore.text as Any,
-            
-            ]
+//        let docData: [String: Any] = [
+//
+//            "technicalPresentationScore": self.technicalPresentationScore.text as Any,
+//            "entertainmentValueScore": self.entertainmentValueScore.text as Any,
+//
+//            ]
+//
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+        self.performSegue(withIdentifier: "UID", sender: self)
+
         
     }
     
@@ -82,12 +95,18 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         mark.currentUID = self.currentUID
         mark.urlName = self.urlName
         mark.currentSelectItem  = self.currentSelectItem
+        mark.multiples = self.multiples
+        mark.displacementSkills = self.displacementSkills
+        mark.spatialDynamics = self.spatialDynamics
+        mark.ropeManipulationSkill = self.ropeManipulationSkill
+        mark.timeViolations = self.timeViolations
+        mark.spaceViolations = self.timeViolations
+        mark.accuracyDeductions = self.accuracyDeductions
+        mark.technicalPresentationScore = self.technicalPresentationScore.text
+        mark.entertainmentValueScore = self.entertainmentValueScore.text
         
     }
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
 
-    }
     
     @objc func doneClicked(){
         view.endEditing(true)

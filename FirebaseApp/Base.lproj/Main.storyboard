@@ -944,7 +944,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="mark:" destination="VIo-wS-HQN" eventType="touchUpInside" id="fCZ-z2-E8O"/>
                                     <action selector="updateData:" destination="VIo-wS-HQN" eventType="touchUpInside" id="uq7-my-RfM"/>
                                 </connections>
                             </button>
@@ -1139,7 +1138,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="mark:" destination="XpW-Aq-fUJ" eventType="touchUpInside" id="SOf-d9-EyK"/>
                                     <action selector="updateData:" destination="XpW-Aq-fUJ" eventType="touchUpInside" id="nGK-0z-Ne3"/>
                                 </connections>
                             </button>
@@ -1407,7 +1405,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="mark:" destination="eJD-Cc-UPz" eventType="touchUpInside" id="0fB-HN-mdz"/>
                                     <action selector="updateData:" destination="eJD-Cc-UPz" eventType="touchUpInside" id="tct-F6-Aow"/>
                                 </connections>
                             </button>

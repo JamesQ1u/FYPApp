@@ -53,16 +53,16 @@ class MarkViewController: UIViewController {
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "spaceViolations": self.spaceViolations.text as Any,
-            "falseStart": self.falseStart.text as Any,
-            "falseSwitch": self.falseSwitch.text as Any,
-
-
-        ]
+//        let docData: [String: Any] = [
+//
+//            "spaceViolations": self.spaceViolations.text as Any,
+//            "falseStart": self.falseStart.text as Any,
+//            "falseSwitch": self.falseSwitch.text as Any,
+//
+//
+//        ]
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+        //db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
 //        let alertController = UIAlertController(title: "Successful!",
 //                                                message: nil, preferredStyle: .alert)
@@ -80,7 +80,9 @@ class MarkViewController: UIViewController {
             mark.currentUID = self.currentUID
             mark.currentSelectItem = self.currentSelectItem
             mark.urlName = self.urlName
-            
+            mark.spaceViolations = self.spaceViolations.text
+            mark.falseStart = self.falseStart.text
+            mark.falseSwitch = self.falseSwitch.text
         }
         
     }

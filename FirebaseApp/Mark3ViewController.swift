@@ -14,6 +14,11 @@ class Mark3ViewController: UIViewController {
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
+    var multiples:String?
+    var displacementSkills:String?
+    var spatialDynamics:String?
+    var ropeManipulationSkill:String?
+    
 
     
     @IBOutlet weak var timeViolations: UITextField!
@@ -48,15 +53,17 @@ class Mark3ViewController: UIViewController {
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "timeViolations": self.timeViolations.text as Any,
-            "spaceViolations": self.spaceViolations.text as Any,
-            "accuracyDeductions": self.accuracyDeductions.text as Any,
-            
-            ]
+//        let docData: [String: Any] = [
+//
+//            "timeViolations": self.timeViolations.text as Any,
+//            "spaceViolations": self.spaceViolations.text as Any,
+//            "accuracyDeductions": self.accuracyDeductions.text as Any,
+//
+//            ]
+//
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+        self.performSegue(withIdentifier: "UID", sender: self)
         
     }
     
@@ -66,15 +73,19 @@ class Mark3ViewController: UIViewController {
             mark.currentUID = self.currentUID
             mark.urlName = self.urlName
             mark.currentSelectItem  = self.currentSelectItem
+            mark.multiples = self.multiples
+            mark.displacementSkills = self.displacementSkills
+            mark.spatialDynamics = self.spatialDynamics
+            mark.ropeManipulationSkill = self.ropeManipulationSkill
+            mark.timeViolations = self.timeViolations.text
+            mark.spaceViolations = self.timeViolations.text
+            mark.accuracyDeductions = self.accuracyDeductions.text
             
         }
         
     }
     
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
-        
-    }
+
     @IBAction func TimeViolations(_ sender: UIStepper) {
         var number = 0
         number = Int(sender.value)
