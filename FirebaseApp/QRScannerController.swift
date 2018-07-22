@@ -97,6 +97,8 @@ class QRScannerController: UIViewController {
             view.addSubview(qrCodeFrameView)
             view.bringSubview(toFront: qrCodeFrameView)
         }
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,6 +121,7 @@ class QRScannerController: UIViewController {
         vc.urlName = self.urlName
         vc.currentUID = self.currentUid
         }
+
     }
     
     func launchApp(decodedURL: String) {

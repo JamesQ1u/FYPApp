@@ -1351,7 +1351,6 @@
                         <outlet property="judge2" destination="Uwu-JV-LNq" id="qO7-54-IXB"/>
                         <outlet property="judge3" destination="xS1-An-SJb" id="DlP-cp-uLb"/>
                         <outlet property="techinicalJudge" destination="BTc-KK-cpo" id="44J-Ps-k44"/>
-                        <segue destination="aBh-mg-E2Q" kind="show" identifier="back" id="B2R-cp-ZZ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eb3-Bi-IsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1507,7 +1506,4 @@
         <image name="backArrow" width="33" height="33"/>
         <image name="firebaselogo" width="124" height="124"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="B2R-cp-ZZ1"/>
-    </inferredMetricsTieBreakers>
 </document>

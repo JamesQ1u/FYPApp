@@ -61,17 +61,11 @@ class MarkViewController: UIViewController {
 //
 //
 //        ]
-        
-        //db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
-        
-//        let alertController = UIAlertController(title: "Successful!",
-//                                                message: nil, preferredStyle: .alert)
-//        self.present(alertController, animated: true, completion: nil)
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//            self.presentedViewController?.dismiss(animated: false, completion: nil)
 //
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+
             self.performSegue(withIdentifier: "UID", sender: nil)
-//        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

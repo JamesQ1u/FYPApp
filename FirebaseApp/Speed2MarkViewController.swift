@@ -27,6 +27,15 @@ class Speed2MarkViewController: UIViewController {
     var spaceViolations:String?
     var falseStart:String?
     var falseSwitch:String?
+    var totalMark:Double?
+    var a:Double?
+    var b:Double?
+    var c:Double?
+    var d:Double?
+    var e:Double?
+    var f:Double?
+    var g:Double?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +62,20 @@ class Speed2MarkViewController: UIViewController {
         Event.text = currentSelectItem!
         
         //alert controller size
-
+        
         
     }
 
     @IBAction func updateData(_ sender: UIButton){
-        
+        //string type change to number
+        a = Double(self.spaceViolations!)
+        b = Double(self.falseStart!)
+        c = Double(self.falseSwitch!)
+        d = Double(self.judge1.text!)
+        e = Double(self.judge2.text!)
+        f = Double(self.judge3.text!)
+        g = Double(self.techinicalJudge.text!)
+        totalMark =  (d!+e!+f!+g!)/2-(a! + b! + c!)*5
         
         content = """
         Space Violations: \(String(describing: spaceViolations!))
@@ -68,23 +85,30 @@ class Speed2MarkViewController: UIViewController {
         Judge2: \(String(describing: self.judge2.text!))
         Judge3: \(String(describing: self.judge3.text!))
         Techinical Judge: \(String(describing: self.techinicalJudge.text!))
+        Total Mark: \(String(describing: totalMark!))
         """
+        
+        
         
         let confirmAlert = UIAlertController(title: "Confirmation", message: self.content, preferredStyle: .alert)
         
         let confirm = UIAlertAction(title: "Confirm", style: .default){(Void) in
             let docData: [String: Any] = [
-                "spaceViolations": self.spaceViolations as Any,
-                "falseStart": self.falseStart as Any,
-                "falseSwitch": self.falseSwitch as Any,
-                "judge1": self.judge1.text as Any,
-                "judge2": self.judge2.text as Any,
-                "judge3": self.judge3.text as Any,
-                "techinicalJudge": self.techinicalJudge.text as Any,
+                "spaceViolations": self.a as Any,
+                "falseStart": self.b as Any,
+                "falseSwitch": self.c as Any,
+                "judge1": self.d as Any,
+                "judge2": self.e as Any,
+                "judge3": self.f as Any,
+                "techinicalJudge": self.g as Any,
                 "JudgeId": Auth.auth().currentUser?.uid as Any,
+                "Total Mark": self.totalMark as Any,
                 ]
-            
             self.db.collection("competition").document(self.currentUID!).collection("competitionItem").document(self.currentSelectItem!).collection("participantCollection").document(self.urlName!).updateData(docData)
+            
+            let home = self.navigationController?.viewControllers[0]
+            self.navigationController?.popToViewController(home as! HomeViewController, animated: true)
+            
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .default){(Void) in
