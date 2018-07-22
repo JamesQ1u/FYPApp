@@ -8,16 +8,25 @@
 
 import UIKit
 import AVFoundation
+import Firebase
+import FirebaseFirestore
 
+import FirebaseStorage
+import FirebaseDatabase
 class QRScannerController: UIViewController {
- var currentUid: String?
+    var currentUid: String?
+    var currentUserName: String = ""
+    var counterArray = [String]()
+    var activate: Bool = false
+    let db = Firestore.firestore()
+    var urlName = ""
     
     @IBAction func cancelBtn(_ sender: UIButton) {
         let controller = QRCodeViewController.fromStoryboard()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    var urlName = ""
+
     
 
     @IBOutlet var messageLabel: UILabel!
@@ -114,6 +123,11 @@ class QRScannerController: UIViewController {
         vc.urlName = self.urlName
         vc.currentUID = self.currentUid
         }
+        
+        if segue.identifier == "activatePage"{
+            let vc = segue.destination as! ActivationViewController
+            vc.currentUID = self.currentUid
+        }
     }
     
     func launchApp(decodedURL: String) {
@@ -121,15 +135,34 @@ class QRScannerController: UIViewController {
         if presentedViewController != nil {
             return
         }
+        db.collection("competition").document(currentUid!).collection("participant").document(decodedURL).addSnapshotListener { documentSnapshot, error in
+            
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            self.activate = (document.data()!["activate"] as? Bool)!
+            self.currentUserName = (document.data()!["EName"] as? String)!
+            
         
-        let alertPrompt = UIAlertController(title: "UID", message: "The UID is \(decodedURL)", preferredStyle: .actionSheet)
+        }
+        let alertPrompt = UIAlertController(title: "Name", message: "The participant is \( self.currentUserName)", preferredStyle: .actionSheet)
+        
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             
             self.urlName = decodedURL
             
+            if (self.activate)
+            {
+                self.performSegue(withIdentifier: "name", sender: self)
+            }
+            else{
+                self.performSegue(withIdentifier: "activatePage", sender: self)
+            }
+            
             //Stop video capture.
             self.captureSession.stopRunning()
-            self.performSegue(withIdentifier: "name", sender: self)
+           
             
             
         })

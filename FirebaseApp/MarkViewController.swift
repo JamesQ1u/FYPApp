@@ -29,7 +29,6 @@ class MarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Print("!!!!!!!!!!!!!!!!!!!!!!!")
 //        print("currentSelectItem: ",currentSelectItem)
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

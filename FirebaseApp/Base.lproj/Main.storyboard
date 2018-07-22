@@ -588,11 +588,59 @@
                     <connections>
                         <outlet property="messageLabel" destination="ozd-wh-Raf" id="Ml1-xr-H9f"/>
                         <segue destination="Hgz-Dt-oxn" kind="show" identifier="name" id="wA0-Fa-QS6"/>
+                        <segue destination="Iqr-es-4wW" kind="show" identifier="activateVC" id="wdT-mw-DtC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JZ-zR-VwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6236" y="-412"/>
+        </scene>
+        <!--Activation View Controller-->
+        <scene sceneID="ycp-b1-9Vz">
+            <objects>
+                <viewController id="Iqr-es-4wW" customClass="ActivationViewController" customModule="FirebaseApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleAspectFill" id="IGe-TD-iEP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="personal_image" translatesAutoresizingMaskIntoConstraints="NO" id="QvG-th-V16">
+                                <rect key="frame" x="30" y="112" width="355" height="189"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BSt-ZI-MuX"/>
+                                    <constraint firstAttribute="height" constant="200" id="Caq-Ef-aqy"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-oi-DbC">
+                                <rect key="frame" x="160" y="405" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="dqqeeq"/>
+                                <state key="normal" title="Upload Photo"/>
+                                <connections>
+                                    <action selector="uploadPhotoBtn:" destination="Iqr-es-4wW" eventType="touchUpInside" id="hjT-Bg-Pri"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbW-Vw-ACf">
+                                <rect key="frame" x="163" y="505" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Activate now"/>
+                                <connections>
+                                    <action selector="activateBtn:" destination="Iqr-es-4wW" eventType="touchUpInside" id="pVW-20-L3T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qO5-8b-Ylw"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="userPhoto" destination="QvG-th-V16" id="3AP-4X-OaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3A-Km-Iov" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7179.7101449275369" y="-1168.2065217391305"/>
         </scene>
         <!--HeadJudgeScoresheetView Controller-->
         <scene sceneID="Z5m-vx-Ktc">
@@ -1669,5 +1717,6 @@
     <resources>
         <image name="backArrow" width="33" height="33"/>
         <image name="firebaselogo" width="124" height="124"/>
+        <image name="personal_image" width="225" height="225"/>
     </resources>
 </document>

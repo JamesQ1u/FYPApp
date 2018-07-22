@@ -50,20 +50,19 @@ class Mark3ViewController: UIViewController {
             
             ]
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document("個人Personal30secMale花式比賽7-8").collection("participantCollection").document(urlName!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UID"{
-            let mark = segue.destination as! Mark1ViewController
-            mark.currentUID = self.currentUID
+            let mark = segue.destination as! Mark3ViewController
             mark.urlName = self.urlName
-            
+            mark.currentUID = self.currentUID
+            mark.currentSelectItem  = self.currentSelectItem
         }
         
     }
-    
     @IBAction func mark(_ sender: UIButton){
         self.performSegue(withIdentifier: "UID", sender: self)
         
