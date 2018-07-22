@@ -37,7 +37,7 @@ class personalInformViewController: UIViewController {
         
         super.viewDidLoad()
 
-         print("Personal UID:" , currentUID!)
+         //print("Personal UID:" , currentUID!)
         struct compItem {
             let title: String
             let name: [String]
