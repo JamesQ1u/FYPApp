@@ -137,7 +137,7 @@ class QRScannerController: UIViewController {
             let vc = segue.destination as! ActivationViewController
                 vc.currentUID = self.currentUid
                 vc.urlName = self.urlName
-                vc.currentSelectItem = self.currentSelectedItem
+               // vc.currentSelectItem = self.currentSelectedItem
         }
 
     }
