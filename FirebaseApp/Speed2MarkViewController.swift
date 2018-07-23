@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class Speed2MarkViewController: UIViewController {
     @IBOutlet weak var judge1: UITextField!
@@ -24,6 +25,7 @@ class Speed2MarkViewController: UIViewController {
     let db = Firestore.firestore()
     var content:String?
     
+    @IBOutlet weak var submitBtn: UIButton!
     var spaceViolations:String?
     var falseStart:String?
     var falseSwitch:String?
@@ -39,7 +41,7 @@ class Speed2MarkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         submitBtn.layer.cornerRadius = 20
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))

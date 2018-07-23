@@ -16,6 +16,7 @@ import FirebaseDatabase
 class personalInformViewController: UIViewController {
 
     
+    @IBOutlet weak var userPhoto: UIImageView!
     
     @IBOutlet weak var ID: UILabel!
     @IBOutlet weak var EName: UILabel!
@@ -24,19 +25,43 @@ class personalInformViewController: UIViewController {
     @IBOutlet weak var schoolName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var userPhoto: UIImageView!
     var urlName:String?
     var currentUID: String?
     var userCompetition = [String]()
     var counterArray = [String]()
     let db = Firestore.firestore()
     var currentItemType: String = ""
-
+    var newImage: UIImage!
+     var fireUploadDic: [String:Any]?
+   
+    
     override func viewDidLoad() {
-        
+//        let storage = Storage.storage()
         
         super.viewDidLoad()
-
+//        if ((userPhoto) != nil){
+//              userPhoto.image = newImage
+//        }
+//        else{
+        
+        // Create a reference to the file you want to download
+        let storageRef = Storage.storage().reference().child(urlName!).child("\(urlName!).png")
+        
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print(error)
+                // Uh-oh, an error occurred!
+            } else {
+                // Data for "images/island.jpg" is returned
+                let image = UIImage(data: data!)
+                 self.userPhoto.layer.cornerRadius = self.userPhoto.frame.size.width/2
+                self.userPhoto.clipsToBounds = true
+                self.userPhoto.image = image
+               
+            }
+        }
+//        }
          //print("Personal UID:" , currentUID!)
         struct compItem {
             let title: String
