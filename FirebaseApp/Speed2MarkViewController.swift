@@ -10,12 +10,21 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
+import MediaPlayer
+import AVFoundation
+import FirebaseAuth
 
 class Speed2MarkViewController: UIViewController {
     @IBOutlet weak var judge1: UITextField!
     @IBOutlet weak var judge2: UITextField!
     @IBOutlet weak var judge3: UITextField!
     @IBOutlet weak var techinicalJudge: UITextField!
+    
+    @IBOutlet weak var judge1UIStepper: UIStepper!
+
+    @IBOutlet weak var judge2UIStepper: UIStepper!
+    @IBOutlet weak var judge3UIStepper: UIStepper!
+    @IBOutlet weak var techinicalJudgeUIStepper: UIStepper!
     
     @IBOutlet weak var Event: UILabel!
     
@@ -64,10 +73,33 @@ class Speed2MarkViewController: UIViewController {
         Event.text = currentSelectItem!
         
         //alert controller size
+        /// Volume View
+        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        volumeView.isHidden = false
+        volumeView.alpha = 0.01
+        view.addSubview(volumeView)
+        
+        /// Notification Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(self.volumeDidChange(notification:)), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
+        
         
         
     }
-
+    @objc func volumeDidChange(notification: NSNotification) {
+        judge1UIStepper.value += 1
+        judge1.text = String(Int(judge1UIStepper.value))
+        
+        judge2UIStepper.value += 1
+        judge2.text = String(Int(judge2UIStepper.value))
+        
+        judge3UIStepper.value += 1
+        judge3.text = String(Int(judge3UIStepper.value))
+        
+        techinicalJudgeUIStepper.value += 1
+        techinicalJudge.text = String(Int(techinicalJudgeUIStepper.value))
+        
+        
+    }
     @IBAction func updateData(_ sender: UIButton){
         //string type change to number
         a = Double(self.spaceViolations!)
@@ -124,25 +156,18 @@ class Speed2MarkViewController: UIViewController {
         
     }
     @IBAction func Judge1(_ sender: UIStepper) {
-        var number = 0
-        number = Int(sender.value)
-        judge1.text = String(number)
+
+        judge1.text = String(Int(judge1UIStepper.value))
     }
     @IBAction func Judge2(_ sender: UIStepper) {
-        var number = 0
-        number = Int(sender.value)
-        judge2.text = String(number)
+          judge2.text = String(Int(judge2UIStepper.value))
     }
     @IBAction func Judge3(_ sender: UIStepper) {
-        var number = 0
-        number = Int(sender.value)
-        judge3.text = String(number)
+          judge3.text = String(Int(judge3UIStepper.value))
     }
 
     @IBAction func TechnicalJudge(_ sender: UIStepper) {
-        var number = 0
-        number = Int(sender.value)
-        techinicalJudge.text = String(number)
+        techinicalJudge.text = String(Int(techinicalJudgeUIStepper.value))
     }
     
 

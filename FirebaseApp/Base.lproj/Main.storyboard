@@ -1221,10 +1221,14 @@
                     <connections>
                         <outlet property="Event" destination="EGE-Pi-B8p" id="baP-Nf-dqe"/>
                         <outlet property="judge1" destination="lZB-Rw-gD6" id="8LZ-OY-xIR"/>
+                        <outlet property="judge1UIStepper" destination="FfD-8g-FPL" id="iUT-OQ-Ad7"/>
                         <outlet property="judge2" destination="Uwu-JV-LNq" id="qO7-54-IXB"/>
+                        <outlet property="judge2UIStepper" destination="ft2-DX-LFd" id="FA2-PM-OEL"/>
                         <outlet property="judge3" destination="xS1-An-SJb" id="DlP-cp-uLb"/>
+                        <outlet property="judge3UIStepper" destination="soN-s8-7FP" id="8oP-kU-08r"/>
                         <outlet property="submitBtn" destination="RiM-3s-THx" id="zPV-UB-yi4"/>
                         <outlet property="techinicalJudge" destination="BTc-KK-cpo" id="44J-Ps-k44"/>
+                        <outlet property="techinicalJudgeUIStepper" destination="zT2-XL-16q" id="Ty6-lg-fKL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eb3-Bi-IsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
