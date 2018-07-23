@@ -16,6 +16,7 @@ import FirebaseDatabase
 class QRScannerController: UIViewController {
     var currentUid: String?
     var currentUserName: String = ""
+    var currentSelectedItem : String = ""
     var counterArray = [String]()
     var activate: Bool = false
     let db = Firestore.firestore()
@@ -124,9 +125,11 @@ class QRScannerController: UIViewController {
         vc.currentUID = self.currentUid
         }
         
-        if segue.identifier == "activatePage"{
+        if segue.identifier == "activateVC"{
             let vc = segue.destination as! ActivationViewController
-            vc.currentUID = self.currentUid
+                vc.currentUID = self.currentUid
+                vc.urlName = self.urlName
+                vc.currentSelectItem = self.currentSelectedItem
         }
     }
     
@@ -135,29 +138,19 @@ class QRScannerController: UIViewController {
         if presentedViewController != nil {
             return
         }
-        db.collection("competition").document(currentUid!).collection("participant").document(decodedURL).addSnapshotListener { documentSnapshot, error in
-            
-            guard let document = documentSnapshot else {
-                print("Error fetching document: \(error!)")
-                return
-            }
-            self.activate = (document.data()!["activate"] as? Bool)!
-            self.currentUserName = (document.data()!["EName"] as? String)!
-            
         
-        }
         let alertPrompt = UIAlertController(title: "Name", message: "The participant is \( self.currentUserName)", preferredStyle: .actionSheet)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             
             self.urlName = decodedURL
-            
+            print("self.activate:" ,self.activate)
             if (self.activate)
             {
                 self.performSegue(withIdentifier: "name", sender: self)
             }
             else{
-                self.performSegue(withIdentifier: "activatePage", sender: self)
+                self.performSegue(withIdentifier: "activateVC", sender: self)
             }
             
             //Stop video capture.
@@ -197,6 +190,15 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
+        db.collection("competition").document(currentUid!).collection("participant").document(metadataObj.stringValue!).addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    self.activate = (document.data()!["activate"] as? Bool)!
+                    self.currentUserName = (document.data()!["EName"] as? String)!
+                    self.currentSelectedItem = metadataObj.stringValue!
+                }
                 launchApp(decodedURL: metadataObj.stringValue!)
                 messageLabel.text = metadataObj.stringValue
             }

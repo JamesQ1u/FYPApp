@@ -21,7 +21,7 @@ class personalInformViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
     
-    
+    @IBOutlet weak var userPhoto: UIImageView!
     var urlName:String?
     var currentUID: String?
     var userCompetition = [String]()

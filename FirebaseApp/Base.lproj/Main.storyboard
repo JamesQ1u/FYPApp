@@ -593,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8JZ-zR-VwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6236" y="-412"/>
+            <point key="canvasLocation" x="5897" y="-413"/>
         </scene>
         <!--Activation View Controller-->
         <scene sceneID="ycp-b1-9Vz">
@@ -603,31 +603,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="personal_image" translatesAutoresizingMaskIntoConstraints="NO" id="QvG-th-V16">
-                                <rect key="frame" x="30" y="112" width="355" height="189"/>
-                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="BSt-ZI-MuX"/>
-                                    <constraint firstAttribute="height" constant="200" id="Caq-Ef-aqy"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-oi-DbC">
-                                <rect key="frame" x="160" y="405" width="94" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MK6-b1-ffn">
+                                <rect key="frame" x="6" y="73" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbW-Vw-ACf" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
+                                <rect key="frame" x="79" y="596" width="286" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Activate Now"/>
+                                <connections>
+                                    <action selector="activateBtn:" destination="Iqr-es-4wW" eventType="touchUpInside" id="pVW-20-L3T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-oi-DbC" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
+                                <rect key="frame" x="79" y="488" width="282" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.51207625394213419" green="0.82675025873821328" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="dqqeeq"/>
                                 <state key="normal" title="Upload Photo"/>
                                 <connections>
                                     <action selector="uploadPhotoBtn:" destination="Iqr-es-4wW" eventType="touchUpInside" id="hjT-Bg-Pri"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbW-Vw-ACf">
-                                <rect key="frame" x="163" y="505" width="88" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Activate now"/>
-                                <connections>
-                                    <action selector="activateBtn:" destination="Iqr-es-4wW" eventType="touchUpInside" id="pVW-20-L3T"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sxj-4A-A7l">
+                                <rect key="frame" x="57" y="115" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="personal_image" translatesAutoresizingMaskIntoConstraints="NO" id="QvG-th-V16">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="POm-bR-alB"/>
+                                            <constraint firstAttribute="height" constant="300" id="mmS-lU-dPs"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qO5-8b-Ylw"/>
@@ -635,12 +648,15 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activateBtn" destination="nbW-Vw-ACf" id="ZMw-pC-jDt"/>
+                        <outlet property="uploadPhotoBtn" destination="0fx-oi-DbC" id="JCd-XJ-2mN"/>
                         <outlet property="userPhoto" destination="QvG-th-V16" id="3AP-4X-OaE"/>
+                        <segue destination="Hgz-Dt-oxn" kind="show" identifier="toPersonalVC" id="P8F-nf-CJK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3A-Km-Iov" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7179.7101449275369" y="-1168.2065217391305"/>
+            <point key="canvasLocation" x="6861" y="-1188"/>
         </scene>
         <!--HeadJudgeScoresheetView Controller-->
         <scene sceneID="Z5m-vx-Ktc">
@@ -885,23 +901,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCs-pv-pSo">
-                                <rect key="frame" x="278" y="79" width="87" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="personal_image" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-3y-HvF">
+                                <rect key="frame" x="290" y="70" width="104" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="uploadPhoto"/>
-                                <connections>
-                                    <action selector="uploadBtnAction:" destination="Hgz-Dt-oxn" eventType="touchUpInside" id="YeH-hY-cEZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMm-rl-Kaz">
-                                <rect key="frame" x="301" y="117" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="photo"/>
-                                <connections>
-                                    <action selector="photo:" destination="Hgz-Dt-oxn" eventType="touchUpInside" id="KKt-Fz-J8M"/>
-                                    <segue destination="k5X-Ko-Pmt" kind="show" identifier="photo" id="8pD-a4-E9C"/>
-                                </connections>
-                            </button>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5wc-nb-HO8"/>
@@ -912,13 +916,14 @@
                         <outlet property="EName" destination="IsF-3B-UBJ" id="6gd-ra-Nf8"/>
                         <outlet property="UID" destination="uWm-y7-YHv" id="ZEA-Qj-VcG"/>
                         <outlet property="tableView" destination="tFf-7K-BEw" id="iUY-0Q-4fu"/>
+                        <outlet property="userPhoto" destination="pJp-3y-HvF" id="6xa-4X-5Bx"/>
                         <segue destination="4tH-Eo-UF0" kind="show" identifier="speed" id="XJY-HD-6hm"/>
                         <segue destination="eJD-Cc-UPz" kind="show" identifier="fancy" id="TPC-Z3-rJY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txi-yz-2CN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7527.5362318840589" y="-412.50000000000006"/>
+            <point key="canvasLocation" x="7700.0000000000009" y="-413.31521739130437"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="1m6-LP-qDK">
@@ -1719,4 +1724,7 @@
         <image name="firebaselogo" width="124" height="124"/>
         <image name="personal_image" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="P8F-nf-CJK"/>
+    </inferredMetricsTieBreakers>
 </document>

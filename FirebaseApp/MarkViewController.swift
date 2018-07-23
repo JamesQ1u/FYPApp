@@ -16,10 +16,6 @@ class MarkViewController: UIViewController {
     @IBOutlet weak var falseStart: UITextField!
     @IBOutlet weak var falseSwitch: UITextField!
 
-
-    
-    
-    
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
