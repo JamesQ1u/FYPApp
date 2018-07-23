@@ -24,6 +24,7 @@ class ActivationViewController: UIViewController {
     var continueButton:RoundedWhiteButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userPhoto.layer.cornerRadius = userPhoto.frame.size.width/2
         activateBtn.layer.cornerRadius = 20
             userPhoto.clipsToBounds = true
@@ -132,7 +133,9 @@ class ActivationViewController: UIViewController {
       
         if segue.identifier == "toPersonalVC"{
             let user = segue.destination as! personalInformViewController
-            user.userPhoto  = self.userPhoto
+
+           user.newImage  = self.userPhoto.image
+
             user.currentUID = self.currentUID
             user.urlName = self.urlName
 
@@ -175,12 +178,12 @@ extension ActivationViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         
         // 可以自動產生一組獨一無二的 ID 號碼，方便等一下上傳圖片的命名
-        let uniqueString = NSUUID().uuidString
-        
+//        let uniqueString = NSUUID().uuidString
+
         // 當判斷有 selectedImage 時，我們會在 if 判斷式裡將圖片上傳
         if let selectedImage = selectedImageFromPicker {
             
-            let storageRef = Storage.storage().reference().child(urlName!).child("\(uniqueString).png")
+            let storageRef = Storage.storage().reference().child(urlName!).child("\(urlName!).png")
             
             if let uploadData = UIImagePNGRepresentation(selectedImage) {
                 // 這行就是 FirebaseStorage 關鍵的存取方法。
@@ -203,7 +206,7 @@ extension ActivationViewController: UIImagePickerControllerDelegate, UINavigatio
                             // 我們可以 print 出來看看這個連結事不是我們剛剛所上傳的照片。
                             print("Photo Url: \(uploadImageUrl)")
                             
-                            let databaseRef = Database.database().reference().child(self.urlName!).child(uniqueString)
+                            let databaseRef = Database.database().reference().child(self.urlName!).child(self.urlName!)
                             
                             databaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, dataRef) in
                                 
