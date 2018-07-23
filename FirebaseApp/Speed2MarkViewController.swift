@@ -102,7 +102,7 @@ class Speed2MarkViewController: UIViewController {
                 "judge3": self.f as Any,
                 "techinicalJudge": self.g as Any,
                 "JudgeId": Auth.auth().currentUser?.uid as Any,
-                "Total Mark": self.totalMark as Any,
+                "TotalMark": self.totalMark as Any,
                 ]
             self.db.collection("competition").document(self.currentUID!).collection("competitionItem").document(self.currentSelectItem!).collection("participantCollection").document(self.urlName!).updateData(docData)
             
