@@ -27,10 +27,10 @@ class HomeViewController:UIViewController {
     
     override func viewDidLoad() {
         
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         super.viewDidLoad()
         
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         let db = Firestore.firestore()
         
@@ -96,9 +96,9 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
         cell.textLabel?.text = self.enameArray[indexPath.row]
         cell.detailTextLabel?.text = self.startDateArray[indexPath.row].description
-        cell.textLabel?.textColor = UIColor.white
-        cell.detailTextLabel?.textColor = UIColor.white
-        cell.backgroundColor = UIColor(red: 31/255, green: 58/255, blue: 147/255, alpha: 1)
+        //cell.textLabel?.textColor = UIColor.white
+        //cell.detailTextLabel?.textColor = UIColor.white
+        //cell.backgroundColor = UIColor(red: 31/255, green: 58/255, blue: 147/255, alpha: 1)
         
         print(self.uidArray[indexPath.row])
         return cell
