@@ -210,7 +210,7 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 "difficultyScore": self.j as Any,
                 "densityScore": self.k as Any,
                 "JudgeId": Auth.auth().currentUser?.uid as Any,
-                "Total Mark": self.totalMark as Any,
+                "TotalMark": self.totalMark as Any,
                 
                 ]
             

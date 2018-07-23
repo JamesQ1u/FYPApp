@@ -16,7 +16,6 @@ import UIKit
 class ActivationViewController: UIViewController {
     @IBOutlet weak var userPhoto: UIImageView!
     var currentUID: String?
-    var currentSelectItem: String?
     var urlName: String?
     var uploadedPhoto: Bool = false
     @IBOutlet weak var activateBtn: RoundedWhiteButton!
@@ -115,7 +114,7 @@ class ActivationViewController: UIViewController {
         let docData: [String: Any] = [
             "activate": true,
             ]
-        db.collection("competition").document(currentUID!).collection("participant").document(currentSelectItem!).updateData(docData)
+        db.collection("competition").document(currentUID!).collection("participant").document(urlName!).updateData(docData)
         
         let alertController = UIAlertController(title: "Successful!",
                                                 message: nil, preferredStyle: .alert)
@@ -134,7 +133,9 @@ class ActivationViewController: UIViewController {
       
         if segue.identifier == "toPersonalVC"{
             let user = segue.destination as! personalInformViewController
+
            user.newImage  = self.userPhoto.image
+
             user.currentUID = self.currentUID
             user.urlName = self.urlName
 
