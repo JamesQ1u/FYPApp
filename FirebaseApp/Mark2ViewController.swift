@@ -18,9 +18,35 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var difficultyScore: UITextField!
     @IBOutlet weak var densityScore: UITextField!
 
+    @IBOutlet weak var Event: UILabel!
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
+    var content:String?
+    
+    var multiples:String?
+    var displacementSkills:String?
+    var spatialDynamics:String?
+    var ropeManipulationSkill:String?
+    var timeViolations:String?
+    var spaceViolations:String?
+    var accuracyDeductions:String?
+    var technicalPresentationScore:String?
+    var entertainmentValueScore:String?
+    var a:Double?
+    var b:Double?
+    var c:Double?
+    var d:Double?
+    var e:Double?
+    var f:Double?
+    var g:Double?
+    var h:Double?
+    var i:Double?
+    var j:Double?
+    var k:Double?
+    var totalMark:Double?
+    var deductions:Double?
+    
     let db = Firestore.firestore()
     var database = [["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8"]]
     var database1 = [["Basic","Elementary","Intermediate", "Advanced", "Masters"],["0.1","0.2","0.3","0.4"]]
@@ -53,6 +79,8 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         let tap = UITapGestureRecognizer(target: self, action: #selector(Mark2ViewController.hideKeyboard(tapG:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        Event.text = currentSelectItem!
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -135,21 +163,75 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "difficultyScore": self.difficultyScore.text as Any,
-            "densityScore": self.densityScore.text as Any,
-            
-            ]
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+        a = Double(self.multiples!)
+        b = Double(self.displacementSkills!)
+        c = Double(self.spatialDynamics!)
+        d = Double(self.ropeManipulationSkill!)
+        e = Double(self.timeViolations!)
+        f = Double(self.spaceViolations!)
+        g = Double(self.accuracyDeductions!)
+        h = Double(self.technicalPresentationScore!)
+        i = Double(self.entertainmentValueScore!)
+        j = Double(self.difficultyScore.text!)
+        k = Double(self.densityScore.text!)
+        deductions = (a!+b!+c!+d!)+(e!+f!)*0.2+g!*0.5
+        totalMark = (h!+i!+j!+k!)-deductions!
         
-        let alertController = UIAlertController(title: "Successful!",
-         message: nil, preferredStyle: .alert)
-         self.present(alertController, animated: true, completion: nil)
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-         self.presentedViewController?.dismiss(animated: false, completion: nil)
-         }
+        content = """
+        Multiples: \(String(describing: multiples!))
+        Displacement Skills: \(String(describing: displacementSkills!))
+        Spatial Dynamics: \(String(describing: spatialDynamics!))
+        Rope ManipulationSkill: \(String(describing: ropeManipulationSkill!))
+        Time Violations: \(String(describing: timeViolations!))
+        Space Violations: \(String(describing: spaceViolations!))
+        Accuracy Deductions: \(String(describing: accuracyDeductions!))
+        Technical Presentation Score: \(String(describing: technicalPresentationScore!))
+        Entertainment ValueScore: \(String(describing: entertainmentValueScore!))
+        Difficulty Score: \(String(describing: self.difficultyScore.text!))
+        Density Score: \(String(describing: self.densityScore.text!))
+        Total Mark: \(String(describing: totalMark!))
+        """
+        
+        let confirmAlert = UIAlertController(title: "Confirmation", message: self.content, preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "Confirm", style: .default){(Void) in
+            let docData: [String: Any] = [
+                
+                "multiples": self.a as Any,
+                "displacementSkills": self.b as Any,
+                "spatialDynamics": self.c as Any,
+                "ropeManipulationSkill": self.d as Any,
+                "timeViolations": self.e as Any,
+                "spaceViolations": self.f as Any,
+                "accuracyDeductions": self.g as Any,
+                "technicalPresentationScore": self.h as Any,
+                "entertainmentValueScore": self.i as Any,
+                "difficultyScore": self.j as Any,
+                "densityScore": self.k as Any,
+                "JudgeId": Auth.auth().currentUser?.uid as Any,
+                "Total Mark": self.totalMark as Any,
+                
+                ]
+            
+            self.db.collection("competition").document(self.currentUID!).collection("competitionItem").document(self.currentSelectItem!).collection("participantCollection").document(self.urlName!).updateData(docData)
+            
+            let home = self.navigationController?.viewControllers[0]
+            self.navigationController?.popToViewController(home as! HomeViewController, animated: true)
+
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default){(Void) in
+            
+            confirmAlert.dismiss(animated: true, completion: nil)
+        }
+        
+
+        confirmAlert.addAction(confirm)
+        confirmAlert.addAction(cancel)
+        present(confirmAlert, animated: true, completion: nil)
+
+        
     }
     
     

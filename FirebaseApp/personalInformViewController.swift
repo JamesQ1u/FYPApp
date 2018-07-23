@@ -15,10 +15,13 @@ import FirebaseDatabase
 
 class personalInformViewController: UIViewController {
 
-    @IBOutlet weak var UID: UILabel!
+    
+    
+    @IBOutlet weak var ID: UILabel!
     @IBOutlet weak var EName: UILabel!
     @IBOutlet weak var CName: UILabel!
-   
+    @IBOutlet weak var birthDate: UILabel!
+    @IBOutlet weak var schoolName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var userPhoto: UIImageView!
@@ -33,10 +36,8 @@ class personalInformViewController: UIViewController {
         
         
         super.viewDidLoad()
-//        queryInUserCompetition()
-        UID.text = urlName
 
-         print("Personal UID:" , currentUID!)
+         //print("Personal UID:" , currentUID!)
         struct compItem {
             let title: String
             let name: [String]
@@ -46,11 +47,14 @@ class personalInformViewController: UIViewController {
                 self.name = name
             }
         }
-        db.collection("competition").document(currentUID!).collection("participant").document(UID.text!).addSnapshotListener { documentSnapshot, error in
+        db.collection("competition").document(currentUID!).collection("participant").document(urlName!).addSnapshotListener { documentSnapshot, error in
 
             guard let document = documentSnapshot else {
                 print("Error fetching document: \(error!)")
                 return
+            }
+            if let id = document.data()!["ID"] as? String{
+                self.ID.text = "\(id)"
             }
             if let Ename = document.data()!["EName"] as? String{
                 self.EName.text = "\(Ename)"
@@ -58,6 +62,22 @@ class personalInformViewController: UIViewController {
             if let Cname = document.data()!["CName"] as? String{
                 self.CName.text = "\(Cname)"
                 print( "Chinese Name:" , self.CName.text!)
+            }
+            if let Bdate = document.data()!["BDate"] as? Date{
+
+                //let formatter = DateFormatter()
+                //Bdate.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+//                let a = Bdate.string(from: Date())
+//                let b = Bdate.date(from: a)
+//                Bdate.dateFormat = "dd-MM-yyyy"
+//                let lastDate = Bdate.string(from: myDate!)
+//                let date = formatGet.string(from: Bdate)
+//                let bdate = formatPrint.date(from: date)
+                self.birthDate.text = "\(Bdate)"
+            }
+            if let SchoolName = document.data()!["schoolName"]{
+                self.schoolName.text = "\(SchoolName)"
             }
             if let compItem = document.data()!["user_CompetitionItem"] as? compItem{
                 print( "Array:    ===>" , compItem)
@@ -93,11 +113,11 @@ class personalInformViewController: UIViewController {
         
         // 建立一個 UIAlertController 的實體
         // 設定 UIAlertController 的標題與樣式為 動作清單 (actionSheet)
-        let imagePickerAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的圖片", preferredStyle: .actionSheet)
+        let imagePickerAlertController = UIAlertController(title: "Uplaod Photo", message: "", preferredStyle: .actionSheet)
         
         // 建立三個 UIAlertAction 的實體
         // 新增 UIAlertAction 在 UIAlertController actionSheet 的 動作 (action) 與標題
-        let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (Void) in
+        let imageFromLibAction = UIAlertAction(title: "Photos", style: .default) { (Void) in
             
             // 判斷是否可以從照片圖庫取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -107,7 +127,7 @@ class personalInformViewController: UIViewController {
                 self.present(imagePickerController, animated: true, completion: nil)
             }
         }
-        let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (Void) in
+        let imageFromCameraAction = UIAlertAction(title: "Camera", style: .default) { (Void) in
             
             // 判斷是否可以從相機取得照片來源
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -119,7 +139,7 @@ class personalInformViewController: UIViewController {
         }
         
         // 新增一個取消動作，讓使用者可以跳出 UIAlertController
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (Void) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (Void) in
             
             imagePickerAlertController.dismiss(animated: true, completion: nil)
         }
@@ -215,6 +235,7 @@ extension personalInformViewController:UITableViewDataSource, UITableViewDelegat
                 self.performSegue(withIdentifier: "speed", sender: self)
             }
             else{
+                self.currentItemType = currentSelectItem
                 self.performSegue(withIdentifier: "fancy", sender: self)
             }
         }
@@ -254,7 +275,7 @@ extension personalInformViewController: UIImagePickerControllerDelegate, UINavig
         // 當判斷有 selectedImage 時，我們會在 if 判斷式裡將圖片上傳
         if let selectedImage = selectedImageFromPicker {
             
-            let storageRef = Storage.storage().reference().child(UID.text!).child("\(uniqueString).png")
+            let storageRef = Storage.storage().reference().child(urlName!).child("\(uniqueString).png")
             
             if let uploadData = UIImagePNGRepresentation(selectedImage) {
                 // 這行就是 FirebaseStorage 關鍵的存取方法。
@@ -277,7 +298,7 @@ extension personalInformViewController: UIImagePickerControllerDelegate, UINavig
                             // 我們可以 print 出來看看這個連結事不是我們剛剛所上傳的照片。
                             print("Photo Url: \(uploadImageUrl)")
                             
-                            let databaseRef = Database.database().reference().child(self.UID.text!).child(uniqueString)
+                            let databaseRef = Database.database().reference().child(self.urlName!).child(uniqueString)
                             
                             databaseRef.setValue(uploadImageUrl, withCompletionBlock: { (error, dataRef) in
                                 

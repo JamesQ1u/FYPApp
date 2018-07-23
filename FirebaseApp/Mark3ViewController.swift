@@ -14,12 +14,18 @@ class Mark3ViewController: UIViewController {
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
+    var multiples:String?
+    var displacementSkills:String?
+    var spatialDynamics:String?
+    var ropeManipulationSkill:String?
+    
 
     
     @IBOutlet weak var timeViolations: UITextField!
     @IBOutlet weak var spaceViolations: UITextField!
     @IBOutlet weak var accuracyDeductions: UITextField!
     
+    @IBOutlet weak var Event: UILabel!
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
@@ -37,36 +43,49 @@ class Mark3ViewController: UIViewController {
         timeViolations.text = "0"
         spaceViolations.text = "0"
         accuracyDeductions.text = "0"
-
+        
+        timeViolations.keyboardType = .numberPad
+        spaceViolations.keyboardType = .numberPad
+        accuracyDeductions.keyboardType = .numberPad
+        
+        Event.text = currentSelectItem!
         // Do any additional setup after loading the view.
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "timeViolations": self.timeViolations.text as Any,
-            "spaceViolations": self.spaceViolations.text as Any,
-            "accuracyDeductions": self.accuracyDeductions.text as Any,
-            
-            ]
+//        let docData: [String: Any] = [
+//
+//            "timeViolations": self.timeViolations.text as Any,
+//            "spaceViolations": self.spaceViolations.text as Any,
+//            "accuracyDeductions": self.accuracyDeductions.text as Any,
+//
+//            ]
+//
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
+
+        self.performSegue(withIdentifier: "UID", sender: self)
+
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UID"{
-            let mark = segue.destination as! Mark3ViewController
+            let mark = segue.destination as! Mark1ViewController
             mark.urlName = self.urlName
-            mark.currentUID = self.currentUID
             mark.currentSelectItem  = self.currentSelectItem
+            mark.multiples = self.multiples
+            mark.displacementSkills = self.displacementSkills
+            mark.spatialDynamics = self.spatialDynamics
+            mark.ropeManipulationSkill = self.ropeManipulationSkill
+            mark.timeViolations = self.timeViolations.text
+            mark.spaceViolations = self.timeViolations.text
+            mark.accuracyDeductions = self.accuracyDeductions.text
+            
         }
         
     }
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
-        
-    }
+
     @IBAction func TimeViolations(_ sender: UIStepper) {
         var number = 0
         number = Int(sender.value)

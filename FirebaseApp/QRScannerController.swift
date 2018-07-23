@@ -54,7 +54,7 @@ class QRScannerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("QRScanner UID:" , currentUid!)
+        //print("QRScanner UID:" , currentUid!)
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
@@ -107,6 +107,13 @@ class QRScannerController: UIViewController {
             view.addSubview(qrCodeFrameView)
             view.bringSubview(toFront: qrCodeFrameView)
         }
+
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Start video capture.
+        captureSession.startRunning()
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,6 +131,7 @@ class QRScannerController: UIViewController {
         vc.urlName = self.urlName
         vc.currentUID = self.currentUid
         }
+
         
         if segue.identifier == "activateVC"{
             let vc = segue.destination as! ActivationViewController
@@ -131,6 +139,7 @@ class QRScannerController: UIViewController {
                 vc.urlName = self.urlName
                 vc.currentSelectItem = self.currentSelectedItem
         }
+
     }
     
     func launchApp(decodedURL: String) {

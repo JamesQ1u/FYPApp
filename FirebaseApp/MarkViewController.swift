@@ -16,6 +16,8 @@ class MarkViewController: UIViewController {
     @IBOutlet weak var falseStart: UITextField!
     @IBOutlet weak var falseSwitch: UITextField!
 
+
+    @IBOutlet weak var Event: UILabel!
     var urlName:String?
     var currentSelectItem:String?
     var currentUID:String?
@@ -24,8 +26,8 @@ class MarkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print("currentSelectItem: ",currentSelectItem)
+
+
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
@@ -37,28 +39,31 @@ class MarkViewController: UIViewController {
         spaceViolations.text = "0"
         falseStart.text = "0"
         falseSwitch.text = "0"
+        
+        spaceViolations.keyboardType = .numberPad
+        falseStart.keyboardType = .numberPad
+        falseSwitch.keyboardType = .numberPad
+        
+        Event.text = currentSelectItem!
+        
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "spaceViolations": self.spaceViolations.text as Any,
-            "falseStart": self.falseStart.text as Any,
-            "falseSwitch": self.falseSwitch.text as Any,
+//        let docData: [String: Any] = [
+//
+//            "spaceViolations": self.spaceViolations.text as Any,
+//            "falseStart": self.falseStart.text as Any,
+//            "falseSwitch": self.falseSwitch.text as Any,
+//
+//
+//        ]
+//
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
 
+            self.performSegue(withIdentifier: "UID", sender: nil)
 
-        ]
-        
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
-        
-        let alertController = UIAlertController(title: "Successful!",
-                                                message: nil, preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,7 +72,9 @@ class MarkViewController: UIViewController {
             mark.currentUID = self.currentUID
             mark.currentSelectItem = self.currentSelectItem
             mark.urlName = self.urlName
-            
+            mark.spaceViolations = self.spaceViolations.text
+            mark.falseStart = self.falseStart.text
+            mark.falseSwitch = self.falseSwitch.text
         }
         
     }
@@ -89,13 +96,6 @@ class MarkViewController: UIViewController {
         falseSwitch.text = String(number)
     }
     
-    
-    
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: nil)
-        
-    }
-
     @objc func doneClicked(){
         view.endEditing(true)
     }

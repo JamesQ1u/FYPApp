@@ -19,6 +19,7 @@ class Mark4ViewController: UIViewController {
     @IBOutlet weak var selectSpatialDynamics: UISegmentedControl!
     @IBOutlet weak var selectRopeManipulationSkill: UISegmentedControl!
     
+    @IBOutlet weak var Event: UILabel!
     
     var urlName:String?
     var currentUID: String?
@@ -36,30 +37,22 @@ class Mark4ViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))
-        toolbar.setItems([doneButton], animated: false)
-//        multiples.inputAccessoryView = toolbar
-//        displacementSkills.inputAccessoryView = toolbar
-//        spatialDynamics.inputAccessoryView = toolbar
-//        ropeManipulationSkill.inputAccessoryView = toolbar
-        
-        
-        
-        // Do any additional setup after loading the view.
+        Event.text = currentSelectItem!
     }
     
     @IBAction func updateData(_ sender: UIButton){
-        let docData: [String: Any] = [
-            
-            "multiples": a as Any,
-            "displacementSkills": b as Any,
-            "spatialDynamics": c as Any,
-            "ropeManipulationSkill": d as Any,
-            
-            ]
+//        let docData: [String: Any] = [
+//            
+//            "multiples": a as Any,
+//            "displacementSkills": b as Any,
+//            "spatialDynamics": c as Any,
+//            "ropeManipulationSkill": d as Any,
+//            
+//            ]
+//        
+//        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
         
-        db.collection("competition").document(currentUID!).collection("competitionItem").document(currentSelectItem!).collection("participantCollection").document(urlName!).updateData(docData)
-        
+            self.performSegue(withIdentifier: "UID", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,6 +61,10 @@ class Mark4ViewController: UIViewController {
             mark.urlName = self.urlName
             mark.currentUID = self.currentUID
             mark.currentSelectItem  = self.currentSelectItem
+            mark.multiples = self.a
+            mark.displacementSkills = self.b
+            mark.spatialDynamics = self.c
+            mark.ropeManipulationSkill = self.d
         }
         
     }
@@ -133,10 +130,6 @@ class Mark4ViewController: UIViewController {
         }
     }
     
-    @IBAction func mark(_ sender: UIButton){
-        self.performSegue(withIdentifier: "UID", sender: self)
-        
-    }
     
     @objc func doneClicked(){
         view.endEditing(true)
