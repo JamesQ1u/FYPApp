@@ -30,32 +30,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEy-02-j6m" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEy-02-j6m" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
                                 <rect key="frame" x="24" y="568" width="366" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="VFJ-SL-Zac"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="GNg-s4-Nxa" kind="show" animates="NO" id="W3p-8L-1yy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBI-s3-y7o" customClass="RoundedWhiteButton" customModule="FirebaseApp" customModuleProvider="target">
-                                <rect key="frame" x="24" y="648" width="366" height="64"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="LY1-Ay-cfq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="iFR-Wf-CNF" kind="show" animates="NO" id="fih-sH-gxZ"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tyw-Hd-i8c">
@@ -68,15 +52,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="wEy-02-j6m" secondAttribute="trailing" constant="24" id="3uE-B4-mX8"/>
                             <constraint firstItem="SwD-pA-wP8" firstAttribute="top" secondItem="Tyw-Hd-i8c" secondAttribute="bottom" constant="24" id="6sY-Zn-EAA"/>
                             <constraint firstItem="Tyw-Hd-i8c" firstAttribute="centerX" secondItem="jcX-Y8-8qg" secondAttribute="centerX" id="8xu-DN-5hN"/>
-                            <constraint firstItem="wEy-02-j6m" firstAttribute="leading" secondItem="jk9-az-r39" secondAttribute="leading" constant="24" id="KuT-pL-ejy"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="PBI-s3-y7o" secondAttribute="bottom" constant="24" id="Z5H-qa-8b2"/>
-                            <constraint firstItem="PBI-s3-y7o" firstAttribute="top" secondItem="wEy-02-j6m" secondAttribute="bottom" constant="16" id="aQx-sJ-mUt"/>
-                            <constraint firstAttribute="trailing" secondItem="PBI-s3-y7o" secondAttribute="trailing" constant="24" id="egf-IM-Ild"/>
                             <constraint firstItem="SwD-pA-wP8" firstAttribute="centerX" secondItem="jk9-az-r39" secondAttribute="centerX" id="rtQ-wY-eLc"/>
-                            <constraint firstItem="PBI-s3-y7o" firstAttribute="leading" secondItem="jk9-az-r39" secondAttribute="leading" constant="24" id="tQh-tF-HJu"/>
                             <constraint firstItem="Tyw-Hd-i8c" firstAttribute="top" secondItem="1Vx-CQ-nab" secondAttribute="bottom" constant="200" id="z3O-YV-31R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jcX-Y8-8qg"/>
@@ -86,7 +64,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loginButton" destination="wEy-02-j6m" id="01U-8B-M2h"/>
-                        <outlet property="signupButton" destination="PBI-s3-y7o" id="rtn-p4-2jr"/>
                         <segue destination="YVz-Vv-G2i" kind="show" identifier="toHomeScreen" animates="NO" id="CRM-RF-KKm"/>
                     </connections>
                 </viewController>
