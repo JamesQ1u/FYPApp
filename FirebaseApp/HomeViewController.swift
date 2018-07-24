@@ -30,7 +30,7 @@ class HomeViewController:UIViewController {
         //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         super.viewDidLoad()
         
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         let db = Firestore.firestore()
         
@@ -61,10 +61,10 @@ class HomeViewController:UIViewController {
             }
         }
         /// Volume View
-        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        volumeView.isHidden = false
-        volumeView.alpha = 0.01
-        view.addSubview(volumeView)
+//        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+//        volumeView.isHidden = false
+//        volumeView.alpha = 0.01
+//        view.addSubview(volumeView)
         
         /// Notification Observer
         NotificationCenter.default.addObserver(self, selector: #selector(self.volumeDidChange(notification:)), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)

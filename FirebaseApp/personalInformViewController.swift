@@ -15,7 +15,6 @@ import FirebaseDatabase
 
 class personalInformViewController: UIViewController {
 
-    
     @IBOutlet weak var userPhoto: UIImageView!
     
     @IBOutlet weak var ID: UILabel!
@@ -43,7 +42,7 @@ class personalInformViewController: UIViewController {
 //              userPhoto.image = newImage
 //        }
 //        else{
-        
+          view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         // Create a reference to the file you want to download
         let storageRef = Storage.storage().reference().child(urlName!).child("\(urlName!).png")
         

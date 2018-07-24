@@ -16,7 +16,8 @@ class MarkViewController: UIViewController {
     @IBOutlet weak var falseStart: UITextField!
     @IBOutlet weak var falseSwitch: UITextField!
 
-
+    @IBOutlet weak var nextBtn: UIButton!
+    
     @IBOutlet weak var Event: UILabel!
     var urlName:String?
     var currentSelectItem:String?
@@ -27,7 +28,7 @@ class MarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        nextBtn.layer.cornerRadius = 0.5
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))

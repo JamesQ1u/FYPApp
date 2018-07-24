@@ -20,6 +20,7 @@ class Mark3ViewController: UIViewController {
     var ropeManipulationSkill:String?
     
 
+    @IBOutlet weak var nextBtn: UIButton!
     
     @IBOutlet weak var timeViolations: UITextField!
     @IBOutlet weak var spaceViolations: UITextField!
@@ -30,7 +31,7 @@ class Mark3ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         nextBtn.layer.cornerRadius = 0.5
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         

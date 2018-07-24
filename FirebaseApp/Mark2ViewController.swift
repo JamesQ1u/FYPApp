@@ -14,7 +14,8 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 
     
 
-
+    @IBOutlet weak var submitBtn: UIButton!
+    
     @IBOutlet weak var difficultyScore: UITextField!
     @IBOutlet weak var densityScore: UITextField!
 
@@ -53,7 +54,7 @@ class Mark2ViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        submitBtn.layer.cornerRadius = 0.5
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonSystemItem.done, target: self, action: #selector(self.doneClicked))

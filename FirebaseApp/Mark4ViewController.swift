@@ -13,6 +13,7 @@ import FirebaseFirestore
 class Mark4ViewController: UIViewController {
 
     
+    @IBOutlet weak var nextBtn: UIButton!
     
     @IBOutlet weak var selectMultiples: UISegmentedControl!
     @IBOutlet weak var selectdiSplacementSkills: UISegmentedControl!
@@ -33,7 +34,7 @@ class Mark4ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nextBtn.layer.cornerRadius = 0.5
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         

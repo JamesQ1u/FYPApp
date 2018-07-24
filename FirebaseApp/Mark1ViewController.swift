@@ -14,6 +14,7 @@ import FirebaseFirestore
 class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
 
 
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var technicalPresentationScore: UITextField!
     @IBOutlet weak var entertainmentValueScore: UITextField!
 
@@ -40,7 +41,7 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+ nextBtn.layer.cornerRadius = 0.5
         //done buuton
 
         let toolbar = UIToolbar()

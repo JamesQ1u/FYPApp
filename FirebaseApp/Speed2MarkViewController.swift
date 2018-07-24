@@ -20,12 +20,13 @@ class Speed2MarkViewController: UIViewController {
     @IBOutlet weak var judge3: UITextField!
     @IBOutlet weak var techinicalJudge: UITextField!
     
+    @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var judge1UIStepper: UIStepper!
 
     @IBOutlet weak var judge2UIStepper: UIStepper!
     @IBOutlet weak var judge3UIStepper: UIStepper!
     @IBOutlet weak var techinicalJudgeUIStepper: UIStepper!
-    
+   
     @IBOutlet weak var Event: UILabel!
     
     var urlName:String?
@@ -34,7 +35,8 @@ class Speed2MarkViewController: UIViewController {
     let db = Firestore.firestore()
     var content:String?
     
-    @IBOutlet weak var submitBtn: UIButton!
+   
+    
     var spaceViolations:String?
     var falseStart:String?
     var falseSwitch:String?
@@ -74,10 +76,11 @@ class Speed2MarkViewController: UIViewController {
         
         //alert controller size
         /// Volume View
-        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        volumeView.isHidden = false
-        volumeView.alpha = 0.01
-        view.addSubview(volumeView)
+        /// Volume View
+//        let volumeView = MPVolumeView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+//        volumeView.isHidden = false
+//        volumeView.alpha = 0.01
+//        view.addSubview(volumeView)
         
         /// Notification Observer
         NotificationCenter.default.addObserver(self, selector: #selector(self.volumeDidChange(notification:)), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
