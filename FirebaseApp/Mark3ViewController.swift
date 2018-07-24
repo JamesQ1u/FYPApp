@@ -74,6 +74,7 @@ class Mark3ViewController: UIViewController {
         if segue.identifier == "UID"{
             let mark = segue.destination as! Mark1ViewController
             mark.urlName = self.urlName
+            mark.currentUID = self.currentUID
             mark.currentSelectItem  = self.currentSelectItem
             mark.multiples = self.multiples
             mark.displacementSkills = self.displacementSkills

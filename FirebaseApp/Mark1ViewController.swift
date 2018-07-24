@@ -97,7 +97,6 @@ class Mark1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let mark = segue.destination as! Mark2ViewController
         mark.currentUID = self.currentUID
         mark.urlName = self.urlName
-
         mark.currentSelectItem  = self.currentSelectItem
         mark.multiples = self.multiples
         mark.displacementSkills = self.displacementSkills
